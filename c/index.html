@@ -6,8 +6,8 @@
 	<title>Сравнение</title>
 </head>
 <body>
-	<center><h1><big><big><big id="h1">Гавриил Павлович Кондратенко — зимний вечер.</big></big></big></h1></center>
-	<center><img src="image.jpg" width="50%"></center>
+	<center><h1><big><big><big id="h1">Сравнение картины и стихотворения.</big></big></big></h1></center>
+	<center><img src="image2.png" width="50%"></center>
 	<center><button id="last" accesskey="l" disabled="">Назад</button><button id="next" accesskey="n">Дальше</button></center>
 	<p><center><big><big><big id="text"></big></big></big></center></p>
 	<p id="text3"><center><big><big><big id="text2"></big></big></big></center></p>
@@ -19,16 +19,24 @@
 		var image = document.querySelector('img');
 		var lastbutton = document.querySelector('#last');
 		var nextbutton = document.querySelector('#next');
-		var page = 1;
+		var page = 0;
 		var allpages = 3;
 		var view = false;
 		let div = document.createElement('div');
 		let div2 = document.createElement('div');
 		let div3 = document.createElement('div');
+		let div4 = document.createElement('div');
 		div.innerHTML = "<center><big><big><big><p>Еду. Тихо. Слышны звоны<br>Под копытом на снегу.<br>Только серые вороны<br>Расшумелись на лугу.</p><p>Заколдован невидимкой,<br>Дремлет лес под сказку сна.<br>Словно белою косынкой<br>Повязалася сосна.</p><p>Понагнулась, как старушка,<br>Оперлася на клюку,<br>А под самою макушкой<br>Долбит дятел на суку.</p>Скачет конь, простору много.<br>Валит снег и стелет шаль.<br>Бесконечная дорога<br>Убегает лентой вдаль.</p></big></big></big></center>"
 		div2.innerHTML = "<center><big><big><big><p>Одинаково или по разному увидели авторы это время года?</p><p>Какие образы они создали, что бы передать настроение этой поры?</p><p>Удалось ли им изобразить на полотне и словами своеобразие и красоту русской зимы?</p></big></big></big></center>"
 		div3.innerHTML = "<center><big><big><big><p>Оба творца создали образ зимы. Но художник так же создал образы деревни и людей, а поэт - образы сосны и бесконечных просторов.</p></big></big></big></center>"
+		div4.innerHTML = "<center><big><big><big><big><big><big><br><br><br><br><br><br><br><p><b>Сравнение картины и стихотворения.</b></p><br><br><br><br></big></big></big></big></big></big></center>";
 		function pages (pagenumber) {
+			if (pagenumber === 0) {
+				nametext.textContent = 'Сравнение картины и стихотворения.';
+				div.remove();
+				div2.remove();
+				image.setAttribute('src', 'image2.png');
+			}
 			if (pagenumber === 1) {
 				nametext.textContent = 'Гавриил Павлович Кондратенко — зимний вечер.';
 				div.remove();
@@ -47,15 +55,22 @@
 			}
 		}
 		image.onclick = function() {
-			if (view === false) {
-				view = true;
-				text.textContent = 'Сегодня я буду описывать великолепную картину Гавриила Павловича Кондратенко «Зимний вечер». На ней автор сумел показать сразу и суровость, и красоту русской зимы. Всё изображено в тёплых тонах, из-за чего возникает чувство умиротворения. Создатель смог очень реалистично нарисовать снег, и мы с первого взгляда видим кропотливую работу художника. Из-за сугробов, лежащих на крышах толстым слоем, мы понимаем, что сейчас и не осень, и не весна. Так же сразу видно, что это вечер, ведь в домах светятся окна. Название картины подтверждает эти факты. Так как листья растений неподвижны и покрыты инеем, становится ясно, что погода морозная и безветренная. На переднем плане мы видим деревянный мост, сколоченый из пары досок, по которому проезжает вереница саней. А рядом с повозками идут усталые люди, торопящияся вернуться домой. Так же на этом мосту находятся чёрные птицы, и это нам говорит, что в повозках имеется зерно, которое сыпется на дорогу, и пернатые его едят.';
-				text2.textContent = 'Мне эта картина очень понравилась из-за своей детальности и реалистичности, и я всем советую обращать больше внимания на творения русских художников.';
+			if (page === 0) {
+				nametext.textContent = '';
+				image.setAttribute('src', '');
+				image.before(div4);
 			}
-			else {
-				view = false;
-				text.textContent = '';
-				text2.textContent = '';
+			if (page === 1) {
+				if (view === false) {
+					view = true;
+					text.textContent = 'Сегодня я буду описывать великолепную картину Гавриила Павловича Кондратенко «Зимний вечер». На ней автор сумел показать сразу и суровость, и красоту русской зимы. Всё изображено в тёплых тонах, из-за чего возникает чувство умиротворения. Создатель смог очень реалистично нарисовать снег, и мы с первого взгляда видим кропотливую работу художника. Из-за сугробов, лежащих на крышах толстым слоем, мы понимаем, что сейчас и не осень, и не весна. Так же сразу видно, что это вечер, ведь в домах светятся окна. Название картины подтверждает эти факты. Так как листья растений неподвижны и покрыты инеем, становится ясно, что погода морозная и безветренная. На переднем плане мы видим деревянный мост, сколоченый из пары досок, по которому проезжает вереница саней. А рядом с повозками идут усталые люди, торопящияся вернуться домой. Так же на этом мосту находятся чёрные птицы, и это нам говорит, что в повозках имеется зерно, которое сыпется на дорогу, и пернатые его едят.';
+					text2.textContent = 'Мне эта картина очень понравилась из-за своей детальности и реалистичности, и я всем советую обращать больше внимания на творения русских художников.';
+				}
+				else {
+					view = false;
+					text.textContent = '';
+					text2.textContent = '';
+				}
 			}
 		}
 		div.onclick = function() {
@@ -82,11 +97,17 @@
 				div3.remove();
 			}
 		}
+		div4.onclick = function() {
+				nametext.textContent = 'Сравнение картины и стихотворения.';
+				div4.remove();
+				image.setAttribute('src', 'image2.png');
+		}
 		nextbutton.onclick = function() {
 			view = false;
 			text.textContent = '';
 			text2.textContent = '';
 			div3.remove();
+			div4.remove();
 			image.setAttribute ('src', '');
 			page = page + 1;
 			lastbutton.removeAttribute ('disabled');
@@ -100,10 +121,11 @@
 			text.textContent = '';
 			text2.textContent = '';
 			div3.remove();
+			div4.remove();
 			image.setAttribute ('src', '');
 			page = page - 1;
 			nextbutton.removeAttribute ('disabled');
-			if (page === 1) {
+			if (page === 0) {
 				lastbutton.setAttribute ('disabled', '');
 			}
 			pages(page);
