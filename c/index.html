@@ -4,6 +4,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Сравнение</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="icons/180x180.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="icons/32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="icons/16x16.png">
 </head>
 <body>
 	<center><h1><big><big><big id="h1">Сравнение картины и стихотворения.</big></big></big></h1></center>
@@ -12,124 +15,129 @@
 	<p><center><big><big><big id="text"></big></big></big></center></p>
 	<p id="text3"><center><big><big><big id="text2"></big></big></big></center></p>
 	<script type="text/javascript">
-		var nametext = document.querySelector('#h1');
-		var text = document.querySelector('#text');
-		var text2 = document.querySelector('#text2');
-		var text3 = document.querySelector('#text3');
-		var image = document.querySelector('img');
-		var lastbutton = document.querySelector('#last');
-		var nextbutton = document.querySelector('#next');
-		var page = 0;
-		var allpages = 3;
-		var view = false;
-		let div = document.createElement('div');
-		let div2 = document.createElement('div');
-		let div3 = document.createElement('div');
-		let div4 = document.createElement('div');
-		div.innerHTML = "<center><big><big><big><p>Еду. Тихо. Слышны звоны<br>Под копытом на снегу.<br>Только серые вороны<br>Расшумелись на лугу.</p><p>Заколдован невидимкой,<br>Дремлет лес под сказку сна.<br>Словно белою косынкой<br>Повязалася сосна.</p><p>Понагнулась, как старушка,<br>Оперлася на клюку,<br>А под самою макушкой<br>Долбит дятел на суку.</p>Скачет конь, простору много.<br>Валит снег и стелет шаль.<br>Бесконечная дорога<br>Убегает лентой вдаль.</p></big></big></big></center>"
-		div2.innerHTML = "<center><big><big><big><p>Одинаково или по разному увидели авторы это время года?</p><p>Какие образы они создали, что бы передать настроение этой поры?</p><p>Удалось ли им изобразить на полотне и словами своеобразие и красоту русской зимы?</p></big></big></big></center>"
-		div3.innerHTML = "<center><big><big><big><p>Оба творца создали образ зимы. Но художник так же создал образы деревни и людей, а поэт - образы сосны и бесконечных просторов.</p></big></big></big></center>"
-		div4.innerHTML = "<center><big><big><big><big><big><big><br><br><br><br><br><br><p><b>Сравнение картины и стихотворения.</b></p><br><br><br><br><br></big></big></big></big></big></big></center>";
-		function pages (pagenumber) {
-			if (pagenumber === 0) {
-				nametext.textContent = 'Сравнение картины и стихотворения.';
-				div.remove();
-				div2.remove();
-				image.setAttribute('src', 'image2.png');
+		//declaration all variables
+			var nametext = document.querySelector('#h1');
+			var text = document.querySelector('#text');
+			var text2 = document.querySelector('#text2');
+			var text3 = document.querySelector('#text3');
+			var image = document.querySelector('img');
+			var lastbutton = document.querySelector('#last');
+			var nextbutton = document.querySelector('#next');
+			var page = 0;
+			var allpages = 3;
+			var view = false;
+			let div = document.createElement('div');
+			let div2 = document.createElement('div');
+			let div3 = document.createElement('div');
+			let div4 = document.createElement('div');
+			div.innerHTML = "<center><big><big><big><p>Еду. Тихо. Слышны звоны<br>Под копытом на снегу.<br>Только серые вороны<br>Расшумелись на лугу.</p><p>Заколдован невидимкой,<br>Дремлет лес под сказку сна.<br>Словно белою косынкой<br>Повязалася сосна.</p><p>Понагнулась, как старушка,<br>Оперлася на клюку,<br>А под самою макушкой<br>Долбит дятел на суку.</p>Скачет конь, простору много.<br>Валит снег и стелет шаль.<br>Бесконечная дорога<br>Убегает лентой вдаль.</p></big></big></big></center>"
+			div2.innerHTML = "<center><big><big><big><p>Одинаково или по разному увидели авторы это время года?</p><p>Какие образы они создали, что бы передать настроение этой поры?</p><p>Удалось ли им изобразить на полотне и словами своеобразие и красоту русской зимы?</p></big></big></big></center>"
+			div3.innerHTML = "<center><big><big><big><p>Оба творца создали образ зимы. Но художник так же создал образы деревни и людей, а поэт - образы сосны и бесконечных просторов.</p></big></big></big></center>"
+			div4.innerHTML = "<center><big><big><big><big><big><big><br><br><br><br><br><br><p><b>Сравнение картины и стихотворения.</b></p><br><br><br><br><br></big></big></big></big></big></big></center>";
+		//action on every page
+			function pages (pagenumber) {
+				if (pagenumber === 0) {
+					nametext.textContent = 'Сравнение картины и стихотворения.';
+					div.remove();
+					div2.remove();
+					image.setAttribute('src', 'image2.png');
+				}
+				if (pagenumber === 1) {
+					nametext.textContent = 'Гавриил Павлович Кондратенко — зимний вечер.';
+					div.remove();
+					div2.remove();
+					image.setAttribute('src', 'image.jpg');
+				}
+				if (pagenumber === 2) {
+					nametext.textContent = 'Сергей Есенин — Пороша';
+					div2.remove();
+					image.before(div);
+				}
+				if (pagenumber === 3) {
+					nametext.textContent = 'Вопросы';
+					div.remove();
+					image.before(div2);
+				}
 			}
-			if (pagenumber === 1) {
-				nametext.textContent = 'Гавриил Павлович Кондратенко — зимний вечер.';
-				div.remove();
-				div2.remove();
-				image.setAttribute('src', 'image.jpg');
+		//Hidden text
+			image.onclick = function() {
+				if (page === 0) {
+					nametext.textContent = '';
+					image.setAttribute('src', '');
+					image.before(div4);
+				}
+				if (page === 1) {
+					if (view === false) {
+						view = true;
+						text.textContent = 'Сегодня я буду описывать великолепную картину Гавриила Павловича Кондратенко «Зимний вечер». На ней автор сумел показать сразу и суровость, и красоту русской зимы. Всё изображено в тёплых тонах, из-за чего возникает чувство умиротворения. Создатель смог очень реалистично нарисовать снег, и мы с первого взгляда видим кропотливую работу художника. Из-за сугробов, лежащих на крышах толстым слоем, мы понимаем, что сейчас и не осень, и не весна. Так же сразу видно, что это вечер, ведь в домах светятся окна. Название картины подтверждает эти факты. Так как листья растений неподвижны и покрыты инеем, становится ясно, что погода морозная и безветренная. На переднем плане мы видим деревянный мост, сколоченый из пары досок, по которому проезжает вереница саней. А рядом с повозками идут усталые люди, торопящияся вернуться домой. Так же на этом мосту находятся чёрные птицы, и это нам говорит, что в повозках имеется зерно, которое сыпется на дорогу, и пернатые его едят.';
+						text2.textContent = 'Мне эта картина очень понравилась из-за своей детальности и реалистичности, и я всем советую обращать больше внимания на творения русских художников.';
+					}
+					else {
+						view = false;
+						text.textContent = '';
+						text2.textContent = '';
+					}
+				}
 			}
-			if (pagenumber === 2) {
-				nametext.textContent = 'Сергей Есенин — Пороша';
-				div2.remove();
-				image.before(div);
-			}
-			if (pagenumber === 3) {
-				nametext.textContent = 'Вопросы';
-				div.remove();
-				image.before(div2);
-			}
-		}
-		image.onclick = function() {
-			if (page === 0) {
-				nametext.textContent = '';
-				image.setAttribute('src', '');
-				image.before(div4);
-			}
-			if (page === 1) {
+			div.onclick = function() {
 				if (view === false) {
 					view = true;
-					text.textContent = 'Сегодня я буду описывать великолепную картину Гавриила Павловича Кондратенко «Зимний вечер». На ней автор сумел показать сразу и суровость, и красоту русской зимы. Всё изображено в тёплых тонах, из-за чего возникает чувство умиротворения. Создатель смог очень реалистично нарисовать снег, и мы с первого взгляда видим кропотливую работу художника. Из-за сугробов, лежащих на крышах толстым слоем, мы понимаем, что сейчас и не осень, и не весна. Так же сразу видно, что это вечер, ведь в домах светятся окна. Название картины подтверждает эти факты. Так как листья растений неподвижны и покрыты инеем, становится ясно, что погода морозная и безветренная. На переднем плане мы видим деревянный мост, сколоченый из пары досок, по которому проезжает вереница саней. А рядом с повозками идут усталые люди, торопящияся вернуться домой. Так же на этом мосту находятся чёрные птицы, и это нам говорит, что в повозках имеется зерно, которое сыпется на дорогу, и пернатые его едят.';
-					text2.textContent = 'Мне эта картина очень понравилась из-за своей детальности и реалистичности, и я всем советую обращать больше внимания на творения русских художников.';
+					text.textContent = 'Сегодня я буду описывать великолепный стих Сергея Есенина «Пороша». Название нам сразу показывает, что автор описывает холодное время года, и восхищается снегом, который припорошил землю. Так же мне очень понравилось, как автор описал сосну: «Понагнулась, как старушка, Оперлася на клюку», - эти слова, с помощью красочного сравнения, детализируют дерево. В лирическом стихотворении указывается всего лишь два, да и то схожих цвета в словах «серые вороны» и «белою косынкой», и из-за этого хорошо видно малое колличесвтво красок зимой. В произведении используются средства выразительности, такие как эпитеты, метафоры и олицетворения. Для примера возьмём олицетворение: «Дремлет лес под сказку сна», или метафору «Заколдован невидимкой». Так или иначе, они все дополняют произведение и делают его красивее. Но всё таки, мне это стихотворение понравилось из-за своей красочности и необычного названия.'
+				}
+				else {
+					view = false;
+					text.textContent = '';
+				}
+			}
+			div2.onclick = function() {
+				if (view === false) {
+					view = true;
+					text.textContent = 'Я считаю, что по разному, ведь на картине преобладают жёлтые цвета, а в стихотворении всё бело-серое. Так же у Есенина в акцентирована суровость русской зимы, а у Гавриила — красота.'
+					text2.textContent = 'Я считаю, что Гавриилу удалось передать всё, а Есенину — только своеобразие, ведь он больше показывает мрачность и суровость зимы вместо красоты.'
+					text3.before(div3);
 				}
 				else {
 					view = false;
 					text.textContent = '';
 					text2.textContent = '';
+					div3.remove();
 				}
 			}
-		}
-		div.onclick = function() {
-			if (view === false) {
-				view = true;
-				text.textContent = 'Сегодня я буду описывать великолепный стих Сергея Есенина «Пороша». Название нам сразу показывает, что автор описывает холодное время года, и восхищается снегом, который припорошил землю. Так же мне очень понравилось, как автор описал сосну: «Понагнулась, как старушка, Оперлася на клюку», - эти слова, с помощью красочного сравнения, детализируют дерево. В лирическом стихотворении указывается всего лишь два, да и то схожих цвета в словах «серые вороны» и «белою косынкой», и из-за этого хорошо видно малое колличесвтво красок зимой. В произведении используются средства выразительности, такие как эпитеты, метафоры и олицетворения. Для примера возьмём олицетворение: «Дремлет лес под сказку сна», или метафору «Заколдован невидимкой». Так или иначе, они все дополняют произведение и делают его красивее. Но всё таки, мне это стихотворение понравилось из-за своей красочности и необычного названия.'
+		//hidden old view
+			div4.onclick = function() {
+					nametext.textContent = 'Сравнение картины и стихотворения.';
+					div4.remove();
+					image.setAttribute('src', 'image2.png');
 			}
-			else {
-				view = false;
-				text.textContent = '';
-			}
-		}
-		div2.onclick = function() {
-			if (view === false) {
-				view = true;
-				text.textContent = 'Я считаю, что по разному, ведь на картине преобладают жёлтые цвета, а в стихотворении всё бело-серое. Так же у Есенина в акцентирована суровость русской зимы, а у Гавриила — красота.'
-				text2.textContent = 'Я считаю, что Гавриилу удалось передать всё, а Есенину — только своеобразие, ведь он больше показывает мрачность и суровость зимы вместо красоты.'
-				text3.before(div3);
-			}
-			else {
+		//pressing buttons
+			nextbutton.onclick = function() {
 				view = false;
 				text.textContent = '';
 				text2.textContent = '';
 				div3.remove();
-			}
-		}
-		div4.onclick = function() {
-				nametext.textContent = 'Сравнение картины и стихотворения.';
 				div4.remove();
-				image.setAttribute('src', 'image2.png');
-		}
-		nextbutton.onclick = function() {
-			view = false;
-			text.textContent = '';
-			text2.textContent = '';
-			div3.remove();
-			div4.remove();
-			image.setAttribute ('src', '');
-			page = page + 1;
-			lastbutton.removeAttribute ('disabled');
-			if (page === allpages) {
-				nextbutton.setAttribute ('disabled', '');
+				image.setAttribute ('src', '');
+				page = page + 1;
+				lastbutton.removeAttribute ('disabled');
+				if (page === allpages) {
+					nextbutton.setAttribute ('disabled', '');
+				}
+				pages(page);
 			}
-			pages(page);
-		}
-		lastbutton.onclick = function() {
-			view = false;
-			text.textContent = '';
-			text2.textContent = '';
-			div3.remove();
-			div4.remove();
-			image.setAttribute ('src', '');
-			page = page - 1;
-			nextbutton.removeAttribute ('disabled');
-			if (page === 0) {
-				lastbutton.setAttribute ('disabled', '');
+			lastbutton.onclick = function() {
+				view = false;
+				text.textContent = '';
+				text2.textContent = '';
+				div3.remove();
+				div4.remove();
+				image.setAttribute ('src', '');
+				page = page - 1;
+				nextbutton.removeAttribute ('disabled');
+				if (page === 0) {
+					lastbutton.setAttribute ('disabled', '');
+				}
+				pages(page);
 			}
-			pages(page);
-		}
 	</script>
 </body>
 </html>
