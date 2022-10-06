@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru" style="background-color: #FFFFE0;">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Пословицы</title>
+	<link rel="icon" type="image/png" sizes="32x32" href="imgs/32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="imgs/16x16.png">
+</head>
+<body>
+	<center id="text2"><big><big><big><h1>Пословицы</h1></big></big></big></center>
+	<center id="text"><big><big><big><h3>(о труде)</h3></big></big></big></center>
+
+
+
+	<script type="text/javascript">
+		let table = document.createElement('div');
+		let table2 = document.createElement('div');
+		let buttons = document.createElement('div');
+		var text = document.querySelector('#text');
+		var allview = true;
+		var textview = false;
+		var cotologview = true;
+		var one = false;
+		var page = 1;
+		var allpages = 2;
+		var text3 = 'Перед нами мой сборник пословиц о труде. Каждая из них - достояние разных народов. Все они иллюстрируют, как нужно и полезно хоть иногда утруждаться. Изначально я создавал этот проект с целью изучения творчества разных стран, и я хочу принести эти знания и Вам. Так же аудитория может нажать на пословицы сборника, чтобы увидеть и познать их на оригинальных языках, или щёлкнуть мышью по изображению, чтобы разбить эту работу на две страницы и потом каждую посмотреть отдельно (при некорректном отображении).';
+		buttons.innerHTML = '<center><button id="lastbutton" accesskey="l">назад</button><button id="nextbutton" accesskey="n">дальше</button></center>';
+		table.innerHTML = '<table border="0" width="100%"><tr><td width="50%" id="three"><p><center><big><big><big><big><big>Трудолюбивым принадлежит мир</big></big><br>(<span id="one11"></span>нем.<span id="one12"></span>)</big></big></big></center></p><p><center><big><big><big><big><big>Баклажан на стебле дыни не вырастет</big></big><br>(<span id="one21"></span>япон.<span id="one22"></span>)</big></big></big></center></p><p><center><big><big><big><big><big>Без пчел не будет меда, а без работы — денег</big></big><br>(<span id="one31"></span>анг.<span id="one32"></span>)</big></big></big></center></p><p><center><big><big><big><big><big>Для каждого дела своё время</big></big><br>(<span id="one41"></span>эст.<span id="one42"></span>)</big></big></big></center></p><p><center><big><big><big><big><big>День без работы - зря прошел</big></big><br>(<span id="one51"></span>франц.<span id="one52"></span>)</big></big></big></center></p><p><center><big><big><big><big><big>Самое важное время года – весна. Самая важная вещь в жизни - старательность</big></big><br>(<span id="one61"></span>кит.<span id="one62"></span>)</big></big></big></center></p></td><td width="50%"><img id="one" src="imgs/img1.jpg" width="80%" height="auto"></td></tr></table>';
+		table2.innerHTML = '<table border="0" width="100%"><tr><td width="10%" id="five"></td><td width="40%" id="six"><img id="two" src="imgs/img2.jpeg" width="100%" height="auto"></td><td width="50%" id="four"><p><center><big><big><big><big><big>Труд для умного — слава и честь, а глупому (лентяю) — горе и страдание</big></big><br>(<span id="two11"></span>узбек.<span id="two12"></span>)</big></big></big></center></p><p><center><big><big><big><big><big>Если работать спустя рукава, придётся делать заново</big></big><br>(<span id="two21"></span>татар.<span id="two22"></span>)</big></big></big></center></p><p><center><big><big><big><big><big>Чтобы чего-либо добиться, нужно соответственно подготовиться</big></big><br>(<span id="two31"></span>кор.<span id="two32"></span>)</big></big></big></center></p><p><center><big><big><big><big><big>Красавица красива лицом, мастер умелыми руками</big></big><br>(<span id="two41"></span>башк.<span id="two42"></span>)</big></big></big></center></p><p><center><big><big><big><big><big>Думай перед тем, как делать, и когда делаешь – тоже думай</big></big><br>(<span id="two51"></span>нидер.<span id="two52"></span>)</big></big></big></center></p><p><center><big><big><big><big><big>Труд учит человека жить</big></big><br>(<span id="two61"></span>марийск.<span id="two62"></span>)</big></big></big></center></p></td></tr></table>';
+		document.querySelector('h3').textContent = text3;
+		text.after(table2);
+		text.after(table);
+		function onetext () {
+			document.querySelector('#one11').textContent = "Dem Fleißigen gehört die Welt (";
+			document.querySelector('#one21').textContent = "瓜の蔓に茄子はならぬ (";
+			document.querySelector('#one31').textContent = "No bees no honey, no work no money (";
+			document.querySelector('#one41').textContent = "Igal asjal oma aeg (";
+			document.querySelector('#one51').textContent = "C'est un jour perdu qu'un jour sans travail (";
+			document.querySelector('#one61').textContent = "一年之计在于春一年之计在于勤(";
+			document.querySelector('#one12').textContent = ")";
+			document.querySelector('#one22').textContent = ")";
+			document.querySelector('#one32').textContent = ")";
+			document.querySelector('#one42').textContent = ")";
+			document.querySelector('#one52').textContent = ")";
+			document.querySelector('#one62').textContent = ")";
+		}
+		function onetextclear () {
+			document.querySelector('#one11').textContent = "";
+			document.querySelector('#one12').textContent = "";
+			document.querySelector('#one21').textContent = "";
+			document.querySelector('#one22').textContent = "";
+			document.querySelector('#one31').textContent = "";
+			document.querySelector('#one32').textContent = "";
+			document.querySelector('#one41').textContent = "";
+			document.querySelector('#one42').textContent = "";
+			document.querySelector('#one51').textContent = "";
+			document.querySelector('#one52').textContent = "";
+			document.querySelector('#one61').textContent = "";
+			document.querySelector('#one62').textContent = "";
+		}
+		function twotext () {
+			document.querySelector('#two11').textContent = "Donoga ish — shonu shuhrat, nodonga ish — g‘amu kulfat (";
+			document.querySelector('#two21').textContent = "Аннан-моннан эшләсәң, яңадан эшләрсең (";
+			document.querySelector('#two31').textContent = "눈을 떠야 별을 보지 (";
+			document.querySelector('#two41').textContent = "Сибәрҙең йөҙө уртаҡ, оҫтаның ҡулы уртаҡ (";
+			document.querySelector('#two51').textContent = "Denk aleer gij doende zijt en doende denk dan nog (";
+			document.querySelector('#two61').textContent = "Пӓшӓ эдемӹм ӹлӓш тымда. (";
+
+			document.querySelector('#two12').textContent = ")";
+			document.querySelector('#two22').textContent = ")";
+			document.querySelector('#two32').textContent = ")";
+			document.querySelector('#two42').textContent = ")";
+			document.querySelector('#two52').textContent = ")";
+			document.querySelector('#two62').textContent = ")";
+		}
+		function twotextclear () {
+			document.querySelector('#two11').textContent = "";
+			document.querySelector('#two12').textContent = "";
+			document.querySelector('#two21').textContent = "";
+			document.querySelector('#two22').textContent = "";
+			document.querySelector('#two31').textContent = "";
+			document.querySelector('#two32').textContent = "";
+			document.querySelector('#two41').textContent = "";
+			document.querySelector('#two42').textContent = "";
+			document.querySelector('#two51').textContent = "";
+			document.querySelector('#two52').textContent = "";
+			document.querySelector('#two61').textContent = "";
+			document.querySelector('#two62').textContent = "";
+		}
+		function alltext () {
+			if (textview === false) {
+				textview = true;
+				if (allview === true) {
+					onetext();
+					twotext();
+				}
+				else {
+					if (one === true) {
+						table.after(table2);
+						onetext();
+						twotext();
+						table2.remove();
+					}
+					else {
+						table2.after(table);
+						onetext();
+						twotext();
+						table.remove();
+					}
+				}
+			}
+			else {
+				textview = false;
+				if (allview === true) {
+					onetextclear();
+					twotextclear();
+				}
+				else {
+					if (one === true) {
+						table.after(table2);
+						onetextclear();
+						twotextclear();
+						table2.remove();
+					}
+					else {
+						table2.after(table);
+						onetextclear();
+						twotextclear();
+						table.remove();
+					}
+				}
+			}
+		}
+		function pages () {
+			if (page === 1) {
+				text.after(table);
+				table2.remove();
+			}
+			if (page === 2) {
+				text.after(table2);
+				table.remove();
+			}
+			if (page === 3) {
+				table.remove();
+				table2.remove();
+			}
+		}
+		document.querySelector('#one').onclick = function() {
+			if (allview === true) {
+				allview = false;
+				table2.remove();
+				one = true;
+				page = 1;
+				table.after(buttons);
+				document.querySelector('#lastbutton').setAttribute('disabled', '');
+			}
+			else {
+				allview = true;
+				table.after(table2);
+				document.querySelector('#lastbutton').removeAttribute('disabled');
+				document.querySelector('#nextbutton').removeAttribute('disabled');
+				buttons.remove();
+			}
+		}
+		document.querySelector('#two').onclick = function() {
+			if (allview === true) {
+				allview = false;
+				table.remove();
+				one = false;
+				page = 2;
+				table2.after(buttons);
+				document.querySelector('#nextbutton').setAttribute('disabled', '');
+			}
+			else {
+				allview = true;
+				table2.before(table);
+				document.querySelector('#lastbutton').removeAttribute('disabled');
+				document.querySelector('#nextbutton').removeAttribute('disabled');
+				buttons.remove();
+			}
+		}
+		document.querySelector('#three').onclick = function() {alltext();}
+		document.querySelector('#four').onclick = function() {alltext();}
+		table2.after(buttons);
+		document.querySelector('#lastbutton').onclick = function() {
+			page = page - 1;
+			document.querySelector('#nextbutton').removeAttribute('disabled');
+			pages();
+			if (page === 1) {
+				document.querySelector('#lastbutton').setAttribute('disabled', '');
+			}
+		}
+		document.querySelector('#nextbutton').onclick = function() {
+			page = page + 1;
+			document.querySelector('#lastbutton').removeAttribute('disabled');
+			pages();
+			if (page === allpages) {
+				document.querySelector('#nextbutton').setAttribute('disabled', '');
+			}
+		}
+		text.onclick = function() {
+			if (cotologview === true) {
+				cotologview = false;
+				document.querySelector('h3').textContent = '(о труде)';
+			}
+			else {
+				cotologview = true;
+				document.querySelector('h3').textContent = text3;
+			}
+		}
+		text2.onclick = function() {
+			let procent = prompt('Процент?');
+			if (procent !== null) {
+				if (allview === false) {
+					if (one === true) {
+						table.after(table2);
+					}
+					else {
+						table2.after(table);
+					}
+				}
+				document.querySelector('#one').setAttribute('width', String(procent)+'%');
+				document.querySelector('#five').setAttribute('width', String(Number(50-(procent)/2))+'%');
+				document.querySelector('#six').setAttribute('width', String(Number(procent)/2)+'%');
+				if (allview === false) {
+					if (one === true) {
+						table2.remove();
+					}
+					else {
+						table.remove();
+					}
+				}
+			}
+		}
+		buttons.remove();
+	</script>
+</body>
