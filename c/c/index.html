@@ -10,7 +10,7 @@
 <body>
 	<center id="text2"><big><big><big><h1>Пословицы</h1></big></big></big></center>
 	<center id="text"><big><big><big><h3>(о труде)</h3></big></big></big></center>
-
+	<center id="text4">.</center>
 
 
 	<script type="text/javascript">
@@ -230,6 +230,16 @@
 					else {
 						table.remove();
 					}
+				}
+			}
+		}
+		text4.onclick = function() {
+			if (document.fullscreenEnabled !== false) {
+				if (document.fullscreen == false) {
+					document.querySelector('html').requestFullscreen();
+				}
+				else {
+					document.exitFullscreen();
 				}
 			}
 		}
