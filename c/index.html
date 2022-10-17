@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" style="">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,10 +9,10 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="icons/16x16.png">
 </head>
 <body>
-	<center><h1><big><big><big id="h1">Сравнение картины и стихотворения.</big></big></big></h1></center>
+	<center><h1><font id="font" color="#000000"><big><big><big id="h1">Сравнение картины и стихотворения.</big></big></big></font></h1></center>
 	<center><img src="image2.png" width="50%"></center>
 	<center><button id="last" accesskey="l" disabled="">Назад</button><button id="next" accesskey="n">Дальше</button></center>
-	<p><center><big><big><big id="text"></big></big></big></center></p>
+	<p><center><font id="fontText" color="#000000"><big><big><big id="text"></big></big></big></font></center></p>
 	<p id="text3"><center><big><big><big id="text2"></big></big></big></center></p>
 	<script type="text/javascript">
 		//Declaration all variables
@@ -23,6 +23,9 @@
 			var image = document.querySelector('img');
 			var lastbutton = document.querySelector('#last');
 			var nextbutton = document.querySelector('#next');
+			var font = document.querySelector('#font');
+			var documentStyle = document.querySelector('html');
+			var fontText = document.querySelector('#fontText');
 			var page = 0;
 			var allpages = 3;
 			var view = false;
@@ -31,11 +34,19 @@
 			let div2 = document.createElement('div');
 			let div3 = document.createElement('div');
 			let div4 = document.createElement('div');
-			div.innerHTML = "<center><big><big><big><p>Еду. Тихо. Слышны звоны<br>Под копытом на снегу.<br>Только серые вороны<br>Расшумелись на лугу.</p><p>Заколдован невидимкой,<br>Дремлет лес под сказку сна.<br>Словно белою косынкой<br>Повязалася сосна.</p><p>Понагнулась, как старушка,<br>Оперлася на клюку,<br>А под самою макушкой<br>Долбит дятел на суку.</p>Скачет конь, простору много.<br>Валит снег и стелет шаль.<br>Бесконечная дорога<br>Убегает лентой вдаль.</p></big></big></big></center>"
-			div2.innerHTML = "<center><big><big><big><p>Одинаково или по-разному увидели авторы это время года?</p><p>Какие образы они создали, чтобы передать настроение этой поры?</p><p>Удалось ли им изобразить на полотне и словами своеобразие и красоту русской зимы?</p></big></big></big></center>"
+			let div5 = document.createElement('div');
+			let div6 = document.createElement('div');
+			let divFullScreen = document.createElement('div');
+			div6.innerHTML = "<center><font color='#000080'><big><big><big><p>Еду. Тихо. Слышны звоны<br>Под копытом на снегу.<br>Только серые вороны<br>Расшумелись на лугу.</p><p>Заколдован невидимкой,<br>Дремлет лес под сказку сна.<br>Словно белою косынкой<br>Повязалася сосна.</p><p>Понагнулась, как старушка,<br>Оперлася на клюку,<br>А под самою макушкой<br>Долбит дятел на суку.</p>Скачет конь, простору много.<br>Валит снег и стелет шаль.<br>Бесконечная дорога<br>Убегает лентой вдаль.</p></big></big></big></font></center>"
+			div5.innerHTML = '<img width="500" src="Sergey_Esenin.jpg">'
+			div2.innerHTML = "<font color='#FF4500'><big><big><big><p>Одинаково или по-разному увидели авторы это время года?</p><p>Какие образы они создали, чтобы передать настроение этой поры?</p><p>Удалось ли им изобразить на полотне и словами своеобразие и красоту русской зимы?</p></big></big></big></font>"
+			div.innerHTML = "<center><table border='0'><tr><td width='500' id='tr2'></td><td id='tr'></td><td width='500'></td></tr></table></center>"
 			div3.innerHTML = "<center><big><big><big><p>Оба творца создали образ зимы. Но художник так же создал образы деревни и людей, а поэт - образы сосны и бесконечных просторов.</p></big></big></big></center>"
 			div4.innerHTML = "<center><big><big><big><big><big><big><br><br><br><br><br><br><p><b>Сравнение картины и стихотворения.</b></p><br><br><br><br><br></big></big></big></big></big></big></center>";
+			divFullScreen.innerHTML = "<center><button id='fullScreen'>На весь экран</button></center>"
 			var text4 = 'Мне очень понравилось, как творцы передали своеобразие русской зимы. Только увидели они это по-разному, ведь Кондратенко показал красоту, а Есенин - безысходность. Также они создали разные образы: художник - деревни и людей, а поэт - леса и бесконечных просторов. Но, тем не менее, оба творения хороши.';
+			nextbutton.after(divFullScreen);
+			var fullScreenButton = document.querySelector('#fullScreen');
 		//Action on every page
 			function pages (pagenumber) {
 				if (pagenumber === 0) {
@@ -43,22 +54,32 @@
 					div.remove();
 					div2.remove();
 					image.setAttribute('src', 'image2.png');
+					nextbutton.after(divFullScreen);
 				}
 				if (pagenumber === 1) {
 					nametext.textContent = 'Гавриил Павлович Кондратенко — зимний вечер.';
 					div.remove();
 					div2.remove();
 					image.setAttribute('src', 'image.jpg');
+					documentStyle.setAttribute('style', 'background-image: url(imagefone.jpg)');
 				}
 				if (pagenumber === 2) {
 					nametext.textContent = 'Сергей Есенин — Пороша';
 					div2.remove();
 					image.before(div);
+					documentStyle.setAttribute('style', 'background-color: #ADD8E6; background-image: url(stix.jpg);');
+					font.setAttribute('color', '#1E90FF');
+					fontText.setAttribute('color', '#000080');
+					document.querySelector('#tr').prepend(div6);
+					document.querySelector('#tr2').prepend(div5);
 				}
 				if (pagenumber === 3) {
 					nametext.textContent = 'Вопросы';
 					div.remove();
 					image.before(div2);
+					documentStyle.setAttribute('style', 'background-image: url(https://potokmedia.ru/wp-content/uploads/2022/03/1611422291_34-p-fon-iz-znakov-voprosa-38-1920x1172.jpeg);');
+					font.setAttribute('color', '#ffffff');
+					fontText.setAttribute('color', '#FF4500');
 				}
 			}
 		//Hidden text
@@ -147,6 +168,10 @@
 				text2.textContent = '';
 				div3.remove();
 				div4.remove();
+				divFullScreen.remove();
+				documentStyle.removeAttribute('style');
+				font.setAttribute('color', '#000000');
+				fontText.setAttribute('color', '#000000');
 				image.setAttribute ('src', '');
 				page = page + 1;
 				lastbutton.removeAttribute ('disabled');
@@ -162,6 +187,10 @@
 				text2.textContent = '';
 				div3.remove();
 				div4.remove();
+				divFullScreen.remove();
+				documentStyle.removeAttribute('style');
+				font.setAttribute('color', '#000000');
+				fontText.setAttribute('color', '#000000');
 				image.setAttribute ('src', '');
 				page = page - 1;
 				nextbutton.removeAttribute ('disabled');
@@ -169,6 +198,16 @@
 					lastbutton.setAttribute ('disabled', '');
 				}
 				pages(page);
+			}
+			fullScreenButton.onclick = function() {
+				if (document.fullscreenEnabled !== false) {
+					if (document.fullscreen == false) {
+						document.querySelector('html').requestFullscreen();
+					}
+					else {
+						document.exitFullscreen();
+					}
+				}
 			}
 	</script>
 </body>
