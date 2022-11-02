@@ -4,22 +4,25 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Задача c++</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="icon/cpp180x180.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="icon/cpp32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="icon/cpp16x16.png">
 	<style type="text/css">
 		.div {
-			width: 100%;
+			width: 250px;
 			background: #C0C0C0;
 			border-radius: 50px 50px 0px 0px;
 		}
 		.div2 {
-			width: 100%;
+			width: 250px;
 			background: #DCDCDC;
 		}
 		.div3 {
-			width: 100%;
+			width: 250px;
 			background: #C0C0C0;
 		}
 		.div4 {
-			width: 100%;
+			width: 250px;
 			background: #DCDCDC;
 			border-radius: 0px 0px 50px 50px;
 		}
@@ -30,34 +33,60 @@
 	<table width="100%"><tr><td width="10%"></td><td width="80%">
 		<center><p><big><big><big id="one">На вход получается одно целое число: -1; 0; 1.</big></big></big></p></center>
 		<center><p><big><big><big id="two">Нужно сделать так, чтобы если на вход получается число -1 или 1, то программа должна выдать число 0, а если на вход идёт число 0, то команда должна выдать 1.</big></big></big></p></center>
-		<p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2">0<br><br></div><div class="div3"><br>Sample Output:</div><div class="div4">1<br><br></div></big></big></big></p>
-		<p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2"><span>1</span><br><br></div><div class="div3"><br>Sample Output:</div><div class="div4">0<br><br></div></big></big></big></p>
-		<p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2">-1<br><br></div><div class="div3"><br>Sample Output:</div><div class="div4">0<br><br></div></big></big></big></p>
+		<center><p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2">0<br><br></div><div class="div3"><br>Sample Output:</div><div class="div4">1<br><br></div></big></big></big></p></center>
+		<center><p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2"><span id="span1">1</span><br><br></div><div class="div3"><br>Sample Output:</div><div class="div4"><span id="span2">0</span><br><br></div></big></big></big></p></center>
+		<center><p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2"><span id="span3">-1</span><br><br></div><div class="div3"><br>Sample Output:</div><div class="div4"><span id="span4">0</span><br><br></div></big></big></big></p></center>
 	</td><td width="10%"></td></tr></table>
-	<center><button id="last" disabled="">Назад</button><button id="next">Вперёд</button></center>
+	<center><button id="last" disabled="" accesskey="l">Назад</button><button id="next" accesskey="n">Вперёд</button></center>
 	<center id="tochka">.</center>
 	<script type="text/javascript">
 		var last = document.querySelector('#last');
 		var next = document.querySelector('#next');
 		var one = document.querySelector('#one');
 		var two = document.querySelector('#two');
-		var three = document.querySelector('span');
+		var three = document.querySelector('#span1');
+		var four = document.querySelector('#span2');
+		var five = document.querySelector('#span3');
+		var six = document.querySelector('#span4');
 		var h1 = document.querySelector('h1');
 		var page = 1;
-		var allpages = 2;
+		var allpages = 4;
 		function pages() {
 			if (page === 1) {
 				one.textContent = 'На вход получается одно целое число: -1; 0; 1.';
 				two.textContent = 'Нужно сделать так, чтобы если на вход получается число -1 или 1, то программа должна выдать число 0, а если на вход идёт число 0, то команда должна выдать 1.';
 				h1.textContent = 'Задача № 1';
 				three.textContent = '1';
+				four.textContent = '0';
+				five.textContent = '-1';
+				six.textContent = '0';
 			}
 			if (page === 2) {
 				one.textContent = 'На вход получается одно любое целое число.';
 				two.textContent = 'Нужно сделать так, чтобы если на вход получается число 0, то программа должна выдать число 1, а иначе - 0.';
 				h1.textContent = 'Задача № 2';
-				three.textContent = '666';
-
+				three.textContent = '1569';
+				four.textContent = '0';
+				five.textContent = '-1';
+				six.textContent = '0';
+			}
+			if (page === 3) {
+				one.textContent = 'На вход получается одно любое целое число.';
+				two.textContent = 'Нужно сделать так, чтобы если на вход получается число 0, то программа должна выдать число 1, а иначе число должно остаться без изменений.';
+				h1.textContent = 'Задача № 3';
+				three.textContent = '1569';
+				four.textContent = '1569';
+				five.textContent = '-1';
+				six.textContent = '-1';
+			}
+			if (page === 4) {
+				one.textContent = 'На вход получается одно любое целое число.';
+				two.textContent = 'Нужно сделать так, чтобы если на вход получается отрицательное число, то программа должна выдать число 0, а иначе - 1.';
+				h1.textContent = 'Задача № 4';
+				three.textContent = '13';
+				four.textContent = '1';
+				five.textContent = '-666';
+				six.textContent = '0';
 			}
 		}
 		next.onclick = function() {
@@ -78,7 +107,7 @@
 		}
 		document.querySelector('#tochka').onclick = function() {
 				if (document.fullscreenEnabled !== false) {
-					if (document.fullscreen == false) {
+					if (document.fullscreen === false) {
 						document.querySelector('html').requestFullscreen();
 					}
 					else {
