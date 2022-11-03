@@ -26,6 +26,18 @@
 			background: #DCDCDC;
 			border-radius: 0px 0px 50px 50px;
 		}
+		.bat1 {
+			background-color: #ffffff;
+			border: none;
+			width: 15px;
+			height: 15px;
+			border-radius: 5px;
+			transition-duration: 0.4s;
+		}
+		.bat1:hover {
+			background-color: #C0C0C0;
+			color: white;
+		}
 	</style>
 </head>
 <body>
@@ -37,8 +49,8 @@
 		<center><p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2"><span id="span1">1</span><br><br></div><div class="div3"><br>Sample Output:</div><div class="div4"><span id="span2">0</span><br><br></div></big></big></big></p></center>
 		<center><p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2"><span id="span3">-1</span><br><br></div><div class="div3"><br>Sample Output:</div><div class="div4"><span id="span4">0</span><br><br></div></big></big></big></p></center>
 	</td><td width="10%"></td></tr></table>
-	<center><button id="last" disabled="" accesskey="l">Назад</button><button id="next" accesskey="n">Вперёд</button></center>
-	<center id="tochka">.</center>
+	<center><button id="last" disabled="" accesskey="l" style="transition-duration: 1s;">Назад</button><button id="next" accesskey="n" style="transition-duration: 1s;">Вперёд</button></center>
+	<center><button id="tochka" accesskey="m" class="bat1">.</button></center>
 	<script type="text/javascript">
 		var last = document.querySelector('#last');
 		var next = document.querySelector('#next');
@@ -54,6 +66,7 @@
 		var page = 1;
 		var allpages = 4;
 		function pages() {
+			localStorage.setItem('page', page);
 			if (page === 1) {
 				one.textContent = 'На вход получается одно целое число: -1; 0; 1.';
 				two.textContent = 'Нужно сделать так, чтобы если на вход получается число -1 или 1, то программа должна выдать число 0, а если на вход идёт число 0, то команда должна выдать 1.';
@@ -115,6 +128,26 @@
 				last.setAttribute('disabled', '');
 			}
 		}
+		if (!localStorage.getItem('page')) {
+			localStorage.setItem('page', page);
+		}
+		else {
+			if (Number(localStorage.getItem('page')) !== 1) {
+				page = Number(localStorage.getItem('page'));
+			}
+		}
+		if (window.location.hash.length === 2) {
+			if ((!isNaN(Number(window.location.hash[1]))) && (Number(window.location.hash[1]) < (allpages+1)) && (Number(window.location.hash[1]) > 0)) {
+				page = Number(window.location.hash[1]);
+			}
+		}
+		if (page > 1) {
+			last.removeAttribute('disabled');
+		}
+		if (page === allpages) {
+			next.setAttribute('disabled', '');
+		}
+		pages();
 		document.querySelector('#tochka').onclick = function() {
 				if (document.fullscreenEnabled !== false) {
 					if (document.fullscreen === false) {
