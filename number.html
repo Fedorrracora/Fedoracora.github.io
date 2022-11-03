@@ -33,7 +33,7 @@
 	<table width="100%"><tr><td width="10%"></td><td width="80%">
 		<center><p><big><big><big id="one">На вход получается одно целое число: -1; 0; 1.</big></big></big></p></center>
 		<center><p><big><big><big id="two">Нужно сделать так, чтобы если на вход получается число -1 или 1, то программа должна выдать число 0, а если на вход идёт число 0, то команда должна выдать 1.</big></big></big></p></center>
-		<center><p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2">0<br><br></div><div class="div3"><br>Sample Output:</div><div class="div4">1<br><br></div></big></big></big></p></center>
+		<center><p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2"><span id="span5">0</span><br><br></div><div class="div3"><br>Sample Output:</div><div class="div4"><span id="span6">1</span><br><br></div></big></big></big></p></center>
 		<center><p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2"><span id="span1">1</span><br><br></div><div class="div3"><br>Sample Output:</div><div class="div4"><span id="span2">0</span><br><br></div></big></big></big></p></center>
 		<center><p><big><big><big><div class="div"><br>Sample Input:</div><div class="div2"><span id="span3">-1</span><br><br></div><div class="div3"><br>Sample Output:</div><div class="div4"><span id="span4">0</span><br><br></div></big></big></big></p></center>
 	</td><td width="10%"></td></tr></table>
@@ -48,6 +48,8 @@
 		var four = document.querySelector('#span2');
 		var five = document.querySelector('#span3');
 		var six = document.querySelector('#span4');
+		var seven = document.querySelector('#span5');
+		var eight = document.querySelector('#span6');
 		var h1 = document.querySelector('h1');
 		var page = 1;
 		var allpages = 4;
@@ -60,6 +62,8 @@
 				four.textContent = '0';
 				five.textContent = '-1';
 				six.textContent = '0';
+				seven.textContent = '0';
+				eight.textContent = '1';
 			}
 			if (page === 2) {
 				one.textContent = 'На вход получается одно любое целое число.';
@@ -69,6 +73,8 @@
 				four.textContent = '0';
 				five.textContent = '-1';
 				six.textContent = '0';
+				seven.textContent = '0';
+				eight.textContent = '1';
 			}
 			if (page === 3) {
 				one.textContent = 'На вход получается одно любое целое число.';
@@ -78,15 +84,19 @@
 				four.textContent = '1569';
 				five.textContent = '-1';
 				six.textContent = '-1';
+				seven.textContent = '0';
+				eight.textContent = '1';
 			}
 			if (page === 4) {
 				one.textContent = 'На вход получается одно любое целое число.';
-				two.textContent = 'Нужно сделать так, чтобы если на вход получается отрицательное число, то программа должна выдать число 0, а иначе - 1.';
+				two.textContent = 'Нужно найти его модуль.';
 				h1.textContent = 'Задача № 4';
 				three.textContent = '13';
-				four.textContent = '1';
+				four.textContent = '13';
 				five.textContent = '-666';
-				six.textContent = '0';
+				six.textContent = '666';
+				seven.textContent = '0';
+				eight.textContent = '0';
 			}
 		}
 		next.onclick = function() {
