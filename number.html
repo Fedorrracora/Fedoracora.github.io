@@ -8,6 +8,9 @@
 	<link rel="icon" type="image/png" sizes="32x32" href="icon/cpp32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="icon/cpp16x16.png">
 	<style type="text/css">
+		:root {
+			--batt: #C0C0C0;
+		}
 		.div {
 			width: 250px;
 			background: #C0C0C0;
@@ -35,7 +38,7 @@
 			transition-duration: 0.4s;
 		}
 		.bat1:hover {
-			background-color: #C0C0C0;
+			background-color: var(--batt);
 			color: white;
 		}
 	</style>
@@ -67,6 +70,7 @@
 		var allpages = 4;
 		function pages() {
 			localStorage.setItem('page', page);
+			document.querySelector(':root').style.setProperty('--batt', '#C0C0C0');
 			if (page === 1) {
 				one.textContent = 'На вход подаётся одно целое число: -1; 0; 1.';
 				two.textContent = 'Нужно сделать так, чтобы если на вход подаётся число -1 или 1, то программа должна выдать число 0, а если на вход идёт число 0, то команда должна выдать 1.';
@@ -110,6 +114,7 @@
 				six.textContent = '666';
 				seven.textContent = '0';
 				eight.textContent = '0';
+				next.setAttribute('disabled', '');
 			}
 		}
 		next.onclick = function() {
@@ -127,9 +132,6 @@
 			if (page === 1) {
 				last.setAttribute('disabled', '');
 			}
-		}
-		if (window.location.hash === '#logic') {
-			window.location.href = "https://fedorrracora.github.io/Fedoracora.github.io/icon/logic.html";
 		}
 		if (!localStorage.getItem('page')) {
 			localStorage.setItem('page', page);
@@ -151,7 +153,17 @@
 			next.setAttribute('disabled', '');
 		}
 		pages();
+		h1.onclick = function() {
+			if ((window.location.hash === '#logic') && (page === 4)) {
+				page = 5;
+				document.querySelector(':root').style.setProperty('--batt', 'black');
+			}
+		}
 		document.querySelector('#tochka').onclick = function() {
+			if ((window.location.hash === '#run') && (page === 5)) {
+				window.location.href = "https://fedorrracora.github.io/Fedoracora.github.io/icon/logic.html";
+			}
+			else {
 				if (document.fullscreenEnabled !== false) {
 					if (document.fullscreen === false) {
 						document.querySelector('html').requestFullscreen();
@@ -161,6 +173,7 @@
 					}
 				}
 			}
+		}
 	</script>
 </body>
 </html>
