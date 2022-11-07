@@ -63,7 +63,6 @@
 			width: auto;
 		}
 		font {
-			display: none;
 			font-size: 2em;
 			font-family: "Bickham Script One", serif;
 			transition-duration: 0.4s;
@@ -94,6 +93,7 @@
 		var img = document.querySelector('img');
 		var divimg = document.querySelector('.img');
 		var font = document.querySelector('font');
+		font.style.setProperty('display', 'none');
 		function pagesLogic() {
 			spanOne.style.setProperty('display', 'none');
 			spanTwo.style.setProperty('display', 'none');
