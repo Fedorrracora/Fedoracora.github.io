@@ -28,12 +28,12 @@
 			100% {font-size: 2em;}
 		}
 		@keyframes sister {
-			from{transform: rotate(360deg) translate(520px, 0);}
+			from{transform: rotate(360deg) translate(600px, 0);}
 			to{transform: rotate(0deg) translate(0, 0);}
 		}
 		@keyframes unsister {
 			from{transform: rotate(0deg) translate(0, 0);}
-			to{transform: rotate(-90deg) translate(520px, 520px);}
+			to{transform: rotate(-90deg) translate(600px, 600px);}
 		}
 		@keyframes uptext {
 			0%{transform: rotate(0deg) translate(0, 0);}
@@ -118,6 +118,7 @@
 			transition-duration: 0.4s;
 		}
 		.sicreetText {
+			margin: 0 70px;
 			-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
   			mask-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 		}
@@ -126,33 +127,37 @@
 		}
 		.lags {
 			float: right;
-			transform: translate(-520px, calc(0.5 * calc(calc(15px + 4.5em) + calc(calc(calc(100vmin - 5em) - 108px) / 2))));
+			transform: translate(-600px, calc(calc(calc(calc(100vmin - 5em) - 108px) / 2) - calc(calc(60px + 17em) / 2)));
 			width: 0;
 		}
 		.sisters {
 			font-size: 2em;
 			width: 500px;
 			text-align: justify;
-			text-align-last: center;
+			text-align-last: left;
 			border: 5px dotted black;
 			background-color: rgba(255, 255, 0, 0.5);
 			animation-duration: 1s;
 			animation-delay: 0.4s;
 			animation-fill-mode: forwards;
-			transform: translate(520px, 0);
+			transform: translate(580px, 0);
 			display: none;
 			margin-right: 10px;
+			padding: 20px;
 		}
 		.sisters::selection {
 			color: blue;
 			background: yellow;
 		}
 		.inSister {
-			display: inline;
+			text-align: center;
+			text-align-last: center;
+			display: block;
 			color: red;
 			font-size: 1.5em;
+			margin-bottom: 10px;
 		}
-		.inSister::selection, br::selection {
+		.inSister::selection {
 			color: red;
 			background: yellow;
 		}
@@ -160,8 +165,8 @@
 </head>
 <body>
 	<h1>Сравнение картины и стихотворения</h1>
-	<div class="lags"><div class="sisters"><span class="inSister">Сестра милосердия</span><br>
-	Во время Русско-турецкой войны 1877–1878 годов женщина, рискуя своей жизнью спасающая раненых бойцов. Но после того как закончилась война большинство сестёр оказалась без средств к существованию и стали нищими.</div></div>
+	<div class="lags"><div class="sisters"><span class="inSister">Сестра милосердия</span>
+	Во время Русско-турецкой войны 1877–1878 эти женщины, рискуя своей жизнью, спасали раненых бойцов. Но после окончания войны большинство сестёр оказались без средств к существованию и стали нищими.</div></div>
 	<div class="img"><img src="image2.png" onclick="imageOnclick()"></div>
 	<button accesskey="m" id="f" onclick="fullscreen()">Если вы видите этот текст, значит не загрузился css</button>
 	<center><font>Ночь в батихасе</font></center>
@@ -216,7 +221,7 @@
 				font.style.setProperty('opacity', '0');
 				font.textContent = 'Ночь в Бахчисарае';
 				font.style.setProperty('animation-name', 'textw');
-				sisters.style.setProperty('transform', 'rotate(0deg) translate(520px, 0)');
+				sisters.style.setProperty('transform', 'rotate(0deg) translate(600px, 0)');
 				sisters.style.setProperty('animation-name', 'sister');
 				sisters.style.setProperty('display', 'inline-block');
 			}
