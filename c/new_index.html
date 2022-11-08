@@ -28,15 +28,32 @@
 			100% {font-size: 2em;}
 		}
 		@keyframes sister {
-			from{transform: rotate(360deg) translate(510px, 0);}
+			from{transform: rotate(360deg) translate(520px, 0);}
 			to{transform: rotate(0deg) translate(0, 0);}
 		}
 		@keyframes unsister {
+			from{transform: rotate(0deg) translate(0, 0);}
+			to{transform: rotate(-90deg) translate(520px, 520px);}
+		}
+		@keyframes uptext {
 			0%{transform: rotate(0deg) translate(0, 0);}
-			100%{transform: rotate(-90deg) translate(0, 510px);}
+			10%{transform: rotate(5deg) translate(0, 25px);}
+			40%{transform: rotate(-20deg) translate(0, -300px);}
+			60%{transform: rotate(20deg) translate(0, -300px);}
+			80%{transform: rotate(-5deg) translate(0, 25px);}
+			100%{transform: rotate(0deg) translate(0, 0);}
+		}
+		@keyframes uptext2 {
+			0%{transform: rotate(0deg) translate(0, 0);}
+			10%{transform: rotate(5deg) translate(0, 25px);}
+			40%{transform: rotate(-20deg) translate(0, -300px);}
+			60%{transform: rotate(20deg) translate(0, -300px);}
+			80%{transform: rotate(-5deg) translate(0, 25px);}
+			100%{transform: rotate(0deg) translate(0, 0);}
 		}
 		::-webkit-scrollbar {
 			width: 0;
+			height: 0;
 		}
 		html, body {
 			width: 100%;
@@ -49,24 +66,28 @@
 			margin: 0px;
 		}
 		h1 {
-			margin: 32px 0px 16px;
+			margin: 16px 0px 16px;
 			text-align: center;
 			font-size: 3em;
+			animation-duration: 2s;
 		}
 		img {
 			height: calc(calc(100vmin - 3em) - 98px);
 			width: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000);
-			margin-left: calc(calc(calc(100% - calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000))/2);
+			margin-left: 0;
 			transition-duration: 0.4s;
 			transition-timing-function: ease;
 		}
 		.img {
-			width: 100%;
+			width: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000);
+			margin-left: calc(calc(calc(100% - calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000))/2);
 			border: none;
 			padding: 0px;
-			margin: 10px 0px;
+			margin-top: 10px;
+			margin-bottom: 10px;
 			transition-duration: 0.4s;
 			transition-timing-function: ease;
+			display: inline-block;
 		}
 		.buttons {
 			position: fixed;
@@ -96,20 +117,25 @@
 			font-size: 2em;
 			transition-duration: 0.4s;
 		}
+		.sicreetText {
+			-webkit-mask-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+  			mask-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+		}
 		.three {
 			margin-bottom: 30px;
 		}
+		.lags {
+			float: right;
+			transform: translate(-520px, calc(0.5 * calc(calc(15px + 4.5em) + calc(calc(calc(100vmin - 5em) - 108px) / 2))));
+			width: 0;
+		}
 		.sisters {
 			font-size: 2em;
-			max-width: 500px;
-			min-width: 100px;
+			width: 500px;
 			text-align: justify;
 			text-align-last: center;
 			border: 5px dotted black;
 			background-color: rgba(255, 255, 0, 0.5);
-			position: fixed;
-			top: calc(calc(53px - 3em) + calc(calc(calc(100vmin - 5em) - 108px) / 2));
-			right: 0;
 			animation-duration: 1s;
 			animation-delay: 0.4s;
 			animation-fill-mode: forwards;
@@ -134,13 +160,15 @@
 </head>
 <body>
 	<h1>Сравнение картины и стихотворения</h1>
+	<div class="lags"><div class="sisters"><span class="inSister">Сестра милосердия</span><br>
+	Во время Русско-турецкой войны 1877–1878 годов женщина, рискуя своей жизнью спасающая раненых бойцов. Но после того как закончилась война большинство сестёр оказалась без средств к существованию и стали нищими.</div></div>
 	<div class="img"><img src="image2.png" onclick="imageOnclick()"></div>
 	<button accesskey="m" id="f" onclick="fullscreen()">Если вы видите этот текст, значит не загрузился css</button>
 	<center><font>Ночь в батихасе</font></center>
+	<div class="sicreetText">
 	<center><span id="one"></span></center>
 	<center><span id="two"></span></center>
-	<div class="sisters"><span class="inSister">Сестра милосердия</span><br>
-	Во время Русско-турецкой войны 1877–1878 годов женщина, рискуя своей жизнью спасающая раненых бойцов. Но после того как закончилась война большинство сестёр оказалась без средств к существованию и стали нищими.</div>
+	</div>
 	<div class="three"></div>
 	<div class="buttons">
 		<button id="last" style="opacity: 0.6;" onclick="lastButtonOnclick()" accesskey="l">назад</button><button id="next" onclick="nextButtonOnclick()" accesskey="n">вперёд</button>
@@ -158,11 +186,14 @@
 			spanTwo.style.setProperty('display', 'none');
 			wiewstatus = false;
 			if (page === 0) {
-				h1.textContent = 'Сравнение картины и стихотворения';
+				h1.style.setProperty('animation-name', 'uptext');
+				setTimeout(function() {h1.textContent = 'Сравнение картины и стихотворения';}, 1000);
 				img.setAttribute('src', 'image2.png');
 				img.style.setProperty('height', 'calc(calc(100vmin - 3em) - 98px)');
 				img.style.setProperty('width', 'calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000)');
-				img.style.setProperty('margin-left', 'calc(calc(calc(100% - calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000))/2)');
+				divimg.style.setProperty('width', 'calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000)');
+				img.style.setProperty('margin-left', '0');
+				divimg.style.setProperty('margin-left', 'calc(calc(calc(100% - calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000))/2)');
 				font.style.setProperty('animation-name', '');
 				font.style.setProperty('opacity', '0');
 				font.style.setProperty('display', 'none');
@@ -173,18 +204,21 @@
 				setTimeout(function(){sisters.style.setProperty('display', 'none');}, 1400);
 			}
 			if (page === 1) {
-				h1.textContent = 'Гавриил Павлович Кондратенко';
+				h1.style.setProperty('animation-name', 'uptext2');
+				setTimeout(function() {h1.textContent = 'Гавриил Павлович Кондратенко';}, 1000);
 				img.setAttribute('src', 'Ночь в батихасе.jpg');
 				img.style.setProperty('height', 'calc(calc(100vmin - 5em) - 108px)');
 				img.style.setProperty('width', 'calc(calc(calc(calc(100vmin - 5em) - 108px) / 1302) * 1000)');
-				img.style.setProperty('margin-left', 'calc(calc(calc(100% - calc(calc(calc(100vmin - 5em) - 108px) / 1302) * 1000))/2)');
+				divimg.style.setProperty('width', 'calc(calc(calc(calc(100vmin - 5em) - 108px) / 1302) * 1000)');
+				img.style.setProperty('margin-left', '0');
+				divimg.style.setProperty('margin-left', 'calc(calc(calc(100% - calc(calc(calc(100vmin - 5em) - 108px) / 1302) * 1000))/2)');
 				font.style.setProperty('display', 'inline');
 				font.style.setProperty('opacity', '0');
 				font.textContent = 'Ночь в Бахчисарае';
 				font.style.setProperty('animation-name', 'textw');
 				sisters.style.setProperty('transform', 'rotate(0deg) translate(520px, 0)');
 				sisters.style.setProperty('animation-name', 'sister');
-				sisters.style.setProperty('display', 'block');
+				sisters.style.setProperty('display', 'inline-block');
 			}
 			if (page === 2) {
 				h1.textContent = 'Гавриил Павлович Кондратенко';
@@ -238,8 +272,43 @@
 	<script type="text/javascript">//allSicreetTexts
 		var spanOne = document.querySelector('#one');
 		var spanTwo = document.querySelector('#two');
-		var divText = document.querySelector('.three');
+		var divText = document.querySelector('.sicreetText');
 		var wiewstatus = false;
+		var vidim = 0;
+		var vidim2 = 0;
+		function visition() {
+			divText.style.setProperty('-webkit-mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, ' + String(vidim2) + '))');
+			divText.style.setProperty('mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, ' + String(vidim2) + '))');
+			vidim += 0.01;
+			if (vidim < 1) {
+				setTimeout(visition, 10);
+			}
+			else {
+				vidim2 += 0.01;
+				if (vidim2 < 1) {
+					setTimeout(visition, 10);
+				}
+			}
+
+		}
+		function unvisition() {
+			divText.style.setProperty('-webkit-mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, ' + String(vidim2) + '))');
+			divText.style.setProperty('mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, ' + String(vidim2) + '))');
+			vidim2 -= 0.01;
+			if (vidim2 > 0) {
+				setTimeout(unvisition, 10);
+			}
+			else {
+				vidim -= 0.01;
+				if (vidim > 0) {
+					setTimeout(unvisition, 10);
+				}
+				else {
+					spanOne.style.setProperty('display', 'none');
+					spanTwo.style.setProperty('display', 'none');
+				}
+			}
+		}
 		function imageOnclick() {
 			if (wiewstatus === false) {
 				wiewstatus = true;
@@ -248,18 +317,31 @@
 					spanTwo.style.setProperty('display', 'inline');
 					spanOne.textContent = 'Гавриил Павлович Кондратенко родился 21 марта 1854 года в селе Павло-Куракино Городищевского уезда Пензенской губернии. Ещё в маленьком возрасте он очень сильно заинтересовался искусством. В свои 17 лет творец становится вольноприходящим учеником Императорской Академии художеств в Санкт-Петербурге, которую успешно заканчивает в 1882 году на малую золотую медаль за картину «Ночь в Бахчисарае». В последствии у художника окончательно установился свой стиль. В основном он рисует только летние и зимние пейзажи, на первых - тщательно работает с эффектом лунного освещения, а на вторых - делает акцент на более «спокойных» тонах, чтобы передать чувство умиротворения. Но все его картины отличаются большой детальностью и проработанностью.';
 					spanTwo.textContent = 'Во время одной из своих поездок в Крым в 1880-х годах у Гавриила Павловича происходит неожиданная встреча, которая очень сильно повлияла на его жизнь. Он встретил в Севастополе нищую женщину, про которую вскоре узнал, что она в прошлом была сестрой милосердия*. Художник, как человек неравнодушный, решил помочь, и, приехав в Санкт-Петербург, организовал благотворительную выставку в пользу нищих. В итоге его «стараний» была организована новая организация - «Санкт-Петербургский попечительский комитет о сёстрах Красного креста». В последствии она была дважды переименована, сначала в «Общину святой Евгении» (когда этот комитет курировала принцесса Евгения Максимилиановна Ольденбургская), а потом в «Комитет популяризации художественных изданий» (КПХИ). Кондратенко вместе с общиной стал издавать иллюстрированные открытки, чтобы привлечь денежные средства и сделать помощь сёстрам милосердия более эффективной. Деятельность организации прекратилась лишь в 1930 году, то есть спустя примерно 50 лет.';
+					vidim = 0;
+					vidim2 = 0;
+					divText.style.setProperty('-webkit-mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
+					divText.style.setProperty('mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
+					setTimeout(visition, 10);
 				}
 				if (page === 2) {
 					spanOne.style.setProperty('display', 'inline');
 					spanTwo.style.setProperty('display', 'inline');
 					spanOne.textContent = 'Во время существования КПХИ Гавриил Павлович Кондратенко нарисовал картину «Зимний вечер», деньги с продажи которой тоже ушли на благотворительность. На ней автор сумел показать сразу и суровость, и красоту русской зимы. Всё изображено в тёплых тонах, из-за чего, как и на других его снежных картинах, возникает чувство умиротворения. Создатель смог очень реалистично передать признаки холода, и мы с первого взгляда видим кропотливую работу художника. По сугробам, лежащим на крышах толстым слоем и выгледящими мокрыми, мы понимаем, что сейчас конец холодного времени года. Так же сразу видно, что это вечер, ведь в домах светятся окна. Название картины подтверждает этот факт. Так как листья растений неподвижны и покрыты инеем, становится ясно, что погода морозная и безветренная. На переднем плане мы видим деревянный мост, сколоченный из пары досок, по которому проезжает вереница саней. А рядом с повозками идут усталые люди, торопящиеся вернуться домой. Так же на мосту находятся чёрные птицы, и это нам говорит, что в повозках имеется зерно, которое сыпется на дорогу, и пернатые его едят.';
 					spanTwo.textContent = 'Мне эта картина очень понравилась из-за своей детальности и реалистичности, и я всем советую обращать больше внимания на творения русских художников.';
+					vidim = 0;
+					vidim2 = 0;
+					divText.style.setProperty('-webkit-mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
+					divText.style.setProperty('mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
+					setTimeout(visition, 10);
 				}
 			}
 			else {
 				wiewstatus = false;
-				spanOne.style.setProperty('display', 'none');
-				spanTwo.style.setProperty('display', 'none');
+				vidim = 1;
+				vidim2 = 1;
+				divText.style.setProperty('-webkit-mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
+				divText.style.setProperty('mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
+				setTimeout(unvisition, 10);
 			}
 		}
 	</script>
