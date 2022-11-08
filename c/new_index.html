@@ -27,6 +27,14 @@
 			50% {font-size: 0;}
 			100% {font-size: 2em;}
 		}
+		@keyframes sister {
+			from{transform: rotate(360deg) translate(510px, 0);}
+			to{transform: rotate(0deg) translate(0, 0);}
+		}
+		@keyframes unsister {
+			0%{transform: rotate(0deg) translate(0, 0);}
+			100%{transform: rotate(-90deg) translate(0, 510px);}
+		}
 		::-webkit-scrollbar {
 			width: 0;
 		}
@@ -91,6 +99,37 @@
 		.three {
 			margin-bottom: 30px;
 		}
+		.sisters {
+			font-size: 2em;
+			max-width: 500px;
+			min-width: 100px;
+			text-align: justify;
+			text-align-last: center;
+			border: 5px dotted black;
+			background-color: rgba(255, 255, 0, 0.5);
+			position: fixed;
+			top: calc(calc(53px - 3em) + calc(calc(calc(100vmin - 5em) - 108px) / 2));
+			right: 0;
+			animation-duration: 1s;
+			animation-delay: 0.4s;
+			animation-fill-mode: forwards;
+			transform: translate(520px, 0);
+			display: none;
+			margin-right: 10px;
+		}
+		.sisters::selection {
+			color: blue;
+			background: yellow;
+		}
+		.inSister {
+			display: inline;
+			color: red;
+			font-size: 1.5em;
+		}
+		.inSister::selection, br::selection {
+			color: red;
+			background: yellow;
+		}
 	</style>
 </head>
 <body>
@@ -100,6 +139,8 @@
 	<center><font>Ночь в батихасе</font></center>
 	<center><span id="one"></span></center>
 	<center><span id="two"></span></center>
+	<div class="sisters"><span class="inSister">Сестра милосердия</span><br>
+	Во время Русско-турецкой войны 1877–1878 годов женщина, рискуя своей жизнью спасающая раненых бойцов. Но после того как закончилась война большинство сестёр оказалась без средств к существованию и стали нищими.</div>
 	<div class="three"></div>
 	<div class="buttons">
 		<button id="last" style="opacity: 0.6;" onclick="lastButtonOnclick()" accesskey="l">назад</button><button id="next" onclick="nextButtonOnclick()" accesskey="n">вперёд</button>
@@ -109,6 +150,7 @@
 		var img = document.querySelector('img');
 		var divimg = document.querySelector('.img');
 		var font = document.querySelector('font');
+		var sisters = document.querySelector('.sisters');
 		font.style.setProperty('display', 'none');
 		function fontTime() {font.textContent = 'Зимний вечер';}
 		function pagesLogic() {
@@ -125,6 +167,10 @@
 				font.style.setProperty('opacity', '0');
 				font.style.setProperty('display', 'none');
 				font.textContent = '';
+				sisters.style.setProperty('display', 'block');
+				sisters.style.setProperty('transform', 'rotate(0deg) translate(0, 0)');
+				sisters.style.setProperty('animation-name', 'unsister');
+				setTimeout(function(){sisters.style.setProperty('display', 'none');}, 1400);
 			}
 			if (page === 1) {
 				h1.textContent = 'Гавриил Павлович Кондратенко';
@@ -136,6 +182,9 @@
 				font.style.setProperty('opacity', '0');
 				font.textContent = 'Ночь в Бахчисарае';
 				font.style.setProperty('animation-name', 'textw');
+				sisters.style.setProperty('transform', 'rotate(0deg) translate(520px, 0)');
+				sisters.style.setProperty('animation-name', 'sister');
+				sisters.style.setProperty('display', 'block');
 			}
 			if (page === 2) {
 				h1.textContent = 'Гавриил Павлович Кондратенко';
@@ -147,6 +196,10 @@
 				font.style.setProperty('opacity', '1');
 				setTimeout(fontTime, 400);
 				font.style.setProperty('animation-name', 'textw2');
+				sisters.style.setProperty('display', 'block');
+				sisters.style.setProperty('transform', 'rotate(0deg) translate(0, 0)');
+				sisters.style.setProperty('animation-name', 'unsister');
+				setTimeout(function(){sisters.style.setProperty('display', 'none');}, 1400);
 			}
 		}
 	</script>
