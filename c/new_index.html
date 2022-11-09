@@ -60,6 +60,7 @@
 		}
 		html {
 			background-image: url(imagefone.jpg);
+			scroll-behavior: smooth;
 		}
 		body {
 			font-size: 100%;
@@ -126,11 +127,14 @@
 			margin-bottom: 30px;
 		}
 		.lags {
+			position: relative;
 			float: right;
-			transform: translate(-600px, calc(calc(calc(calc(100vmin - 5em) - 108px) / 2) - calc(calc(60px + 17em) / 2)));
+			transform: translate(-40px, calc(calc(calc(calc(100vmin - 5em) - 108px) / 2) - calc(calc(60px + 17em) / 2)));
 			width: 0;
 		}
 		.sisters {
+			position: fixed;
+			right: 0;
 			font-size: 2em;
 			width: 500px;
 			text-align: justify;
@@ -309,8 +313,11 @@
 					setTimeout(unvisition, 10);
 				}
 				else {
-					spanOne.style.setProperty('display', 'none');
-					spanTwo.style.setProperty('display', 'none');
+					window.location.href = '#';
+					setTimeout(function() {
+						spanOne.style.setProperty('display', 'none');
+						spanTwo.style.setProperty('display', 'none');
+					}, 1000);
 				}
 			}
 		}
