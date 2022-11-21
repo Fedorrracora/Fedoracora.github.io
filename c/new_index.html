@@ -64,19 +64,19 @@
 			100%{transform: rotate(0deg) translate(0, 0);}
 		}
 		@keyframes left-right {
-			from {transform: translate(-565px, 0);}
+			from {transform: translate(-665px, 0);}
 			to {transform: translate(0, 0);}
 		}
 		@keyframes right-left {
 			from {transform: translate(0, 0);}
-			to {transform: translate(-565px, 0);}
+			to {transform: translate(-665px, 0);}
 		}
 		@keyframes rotateing {
 			from {transform: skew(0, 0);}
-			to {transform: skew(1deg, 2deg); box-shadow: -2px 2px 5px black inset, -2px 2px 5px black;}
+			to {transform: skew(2deg, 3deg); box-shadow: -3px 3px 5px black inset, -3px 3px 5px black; text-shadow: -3px 3px 5px black;}
 		}
 		@keyframes unrotating {
-			from {transform: skew(1deg, 2deg); box-shadow: -2px 2px 5px black inset, -2px 2px 5px black;}
+			from {transform: skew(2deg, 3deg); box-shadow: -3px 3px 5px black inset, -3px 3px 5px black; text-shadow: -3px 3px 5px black;}
 			to {transform: skew(0, 0);}
 		}
 		::-webkit-scrollbar {
@@ -222,9 +222,9 @@
 			top: calc(3em + 32px);
 			left: 25px;
 			z-index: 0;
-			width: 500px;
+			width: 600px;
 			color: #FF8C00;
-			font-size: 1.7em;
+			font-size: 1.2em;
 			text-shadow: 0 0 10px black, 0 0 5px black;
 			display: none;
 			border-radius: 25px;
@@ -234,7 +234,7 @@
 			background-color: rgba(0, 0, 0, 0.3);
 			padding: 20px;
 		}
-		.backimgsicreet::selection {
+		.backimgsicreet p::selection {
 			background: rgba(0, 0, 128, 0.5);
 			text-shadow: none;
 		}
@@ -247,6 +247,7 @@
 			border: 3px dashed rgba(0, 0, 0, 0.4);
 			border-radius: 50px;
 			background-color: rgba(0, 0, 0, 0.3);
+			backdrop-filter: blur(5px);
 		}
 	</style>
 </head>
@@ -290,7 +291,8 @@
 		</div>
 	</div>
 	<div class="backimgsicreet">
-		Перед нами великолепное стихотворение Сергея Есенина «Пороша». Название нам сразу показывает, что автор описывает холодное время года, и восхищается снегом, который припорошил землю. Мне очень понравилось, как автор описал сосну: «Понагнулась, как старушка, Оперлася на клюку», - эти слова, с помощью красочного сравнения, детализируют дерево. В лирическом стихотворении указывается всего лишь два, да и то схожих цвета: в словах «серые вороны» и «белою косынкой», и именно они отражают монохромность зимы. В произведении используются средства выразительности, такие как эпитеты, метафоры и олицетворения. Для примера возьмём олицетворение: «Дремлет лес под сказку сна», или метафору: «Заколдован невидимкой». Так или иначе, они все дополняют произведение и делают его красивее. Но всё таки, мне это стихотворение понравилось из-за своей красочности речи и необычного названия.
+		<p>Перед нами великолепное стихотворение Сергея Есенина «Пороша». Название нам сразу показывает, что автор описывает холодное время года, и восхищается снегом, который припорошил землю. Мне очень понравилось, как автор описал сосну: «Понагнулась, как старушка, Оперлася на клюку», - эти слова, с помощью красочного сравнения, детализируют дерево. В лирическом стихотворении указывается всего лишь два, да и то схожих цвета: в словах «серые вороны» и «белою косынкой», и именно они отражают монохромность зимы. В произведении используются средства выразительности, такие как метафоры, эпитеты, сравнения, инверсии и олицетворения, и они нужны для описания красоты леса и оживления стихотворения. Разберём каждый литературный приём по отдельности. Метафоры («заколдован невидимкой», «стелет шаль») требуются для создания красивых образов, для понимания "сути" произведения. Эпитеты («серые вороны», «белою косынкой», «бесконечная дорога») используются для красивого отражения признака объекта, что бы тот остался в памяти. Так же они нужны для максимального погружения читателя в стихотворение. Сравнения («понагнулась, как старушка», «словно белою косынкой» «дорога убегает лентой») совмещают в себе свойства и метафор, и эпитетов. Они нужны для создания ярких образов. Инверсии («повязалася сосна», «скачет конь») - это перестановка стандартного порядка слов. Она, в свою очередь, нужна для придачи для речи большей выразительности, особой интонации и подчёркивания значимости слов. Олицетворения ( «дремлет лес», «оперлася на клюку») позволяют придать какому-либо неодушевлённому предмету качества, чувства и черты одушевлённого предмета. Олицетворения, как и метафоры, нужны для декорирования и придачи особой выразительности стихотворению.</p>
+		<p>Именно в умении использовать все эти приёмы и заключается профессионализм автора. Но всё таки, мне это стихотворение понравилось из-за своей красочности речи и необычного названия.</p>
 	</div>
 	<div class="buttons">
 		<button id="last" style="opacity: 0.6;" onclick="lastButtonOnclick()" accesskey="l">назад</button><button id="next" onclick="nextButtonOnclick()" accesskey="n">вперёд</button>
@@ -528,7 +530,7 @@
 					setTimeout(visition, 10);
 				}
 				if (page === 3) {
-					backimgsicreet.style.setProperty('transform', 'translate(-565px, 0)');
+					backimgsicreet.style.setProperty('transform', 'translate(-665px, 0)');
 					backimgsicreet.style.setProperty('animation-name', 'left-right');
 					backimgsicreet.style.setProperty('display', 'block');
 					setTimeout(function() {backimgsicreet.style.setProperty('animation-duration', '0s'); backimgsicreet.style.setProperty('animation-name', 'unrotating'); backimgsicreet.style.setProperty('transform', 'translate(0, 0)');}, 400);
