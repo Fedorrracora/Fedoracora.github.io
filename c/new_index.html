@@ -71,6 +71,14 @@
 			from {transform: translate(0, 0);}
 			to {transform: translate(-565px, 0);}
 		}
+		@keyframes rotateing {
+			from {transform: skew(0, 0);}
+			to {transform: skew(1deg, 2deg); box-shadow: -2px 2px 5px black;}
+		}
+		@keyframes unrotating {
+			from {transform: skew(1deg, 2deg); box-shadow: -2px 2px 5px black;}
+			to {transform: skew(0, 0);}
+		}
 		::-webkit-scrollbar {
 			width: 0;
 			height: 0;
@@ -100,6 +108,7 @@
 			transition-timing-function: ease;
 			animation-duration: 0.8s;
 			animation-fill-mode: forwards;
+			border-radius: 10px;
 		}
 		.img {
 			width: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000);
@@ -219,11 +228,18 @@
 			text-shadow: 0 0 10px black, 0 0 5px black;
 			display: none;
 			border-radius: 25px;
-			border: 3px dashed rgba(0, 0, 0, 0.3);
+			border: 3px dashed rgba(255, 140, 0, 1);
 			animation-duration: 0.4s;
 			animation-fill-mode: forwards;
-			background-color: rgba(0, 0, 0, 0.2);
+			background-color: rgba(0, 0, 0, 0.3);
 			padding: 20px;
+		}
+		.backimgsicreet::selection {
+			background: rgba(0, 0, 128, 0.5);
+			text-shadow: none;
+		}
+		.backimgsicreet:hover {
+			animation-name: rotateing !important;
 		}
 		.textcenter {
 			width: 500px;
@@ -359,7 +375,7 @@
 				}
 				font.style.setProperty('animation-name', 'textw2');	
 			}
-			if (page === 3) {//#1E90FF
+			if (page === 3) {
 				h1.style.setProperty('animation-duration', '3s');
 				h1.style.setProperty('animation-name', 'uptext');
 				setTimeout(function() {h1.textContent = 'Сергей Есенин — Пороша'; h1.style.setProperty('color', '#1E90FF');}, 1000);
@@ -414,38 +430,6 @@
 		var vidim2 = 0;
 		var backvidim = 0;
 		var backvidim2 = 0;
-		/*function backimage() {
-			backimg.style.setProperty('-webkit-mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + '), rgba(0, 0, 0, ' + String(backvidim2) + '), rgba(0, 0, 0, ' + String(backvidim3) + '), rgba(0, 0, 0, ' + String(backvidim4) + '), rgba(0, 0, 0, ' + String(backvidim5) + '))');
-			backimg.style.setProperty('mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + '), rgba(0, 0, 0, ' + String(backvidim2) + '), rgba(0, 0, 0, ' + String(backvidim3) + '), rgba(0, 0, 0, ' + String(backvidim4) + '), rgba(0, 0, 0, ' + String(backvidim5) + '))');
-			if (backvidim < 1) {
-				backvidim += 0.01;
-				setTimeout(backimage, 10);
-			}
-			else {
-				if (backvidim2 < 1) {
-					backvidim2 += 0.01;
-					setTimeout(backimage, 10);
-				}
-				else {
-					if (backvidim3 < 1) {
-						backvidim3 += 0.01;
-						setTimeout(backimage, 10);
-					}
-					else {
-						if (backvidim4 < 1) {
-							backvidim4 += 0.01;
-							setTimeout(backimage, 10);
-						}
-						else {
-							backvidim5 += 0.01;
-							if (backvidim5 < 1) {
-								setTimeout(backimage, 10);
-							}
-						}
-					}
-				}
-			}
-		}*/
 		function backimage() {
 			backimg.style.setProperty('-webkit-mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + ') ' + String(5 + (backvidim2 * 100)) + '%, rgba(0, 0, 0, 0) ' + String(50 + (backvidim2 * 100)) + '%)');
 			backimg.style.setProperty('mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + ') ' + String(5 + (backvidim2 * 100)) + '%, rgba(0, 0, 0, 0) ' + String(50 + (backvidim2 * 100)) + '%)');
@@ -547,6 +531,8 @@
 					backimgsicreet.style.setProperty('transform', 'translate(-565px, 0)');
 					backimgsicreet.style.setProperty('animation-name', 'left-right');
 					backimgsicreet.style.setProperty('display', 'block');
+					setTimeout(function() {backimgsicreet.style.setProperty('animation-duration', '0s'); backimgsicreet.style.setProperty('animation-name', 'unrotating'); backimgsicreet.style.setProperty('transform', 'translate(0, 0)');}, 400);
+					setTimeout(function() {backimgsicreet.style.setProperty('animation-duration', '0.4s');}, 800);
 				}
 			}
 			else {
