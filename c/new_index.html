@@ -27,6 +27,10 @@
 			50% {font-size: 0;}
 			100% {font-size: 2em;}
 		}
+		@keyframes textw3 {
+			from{opacity: 1;}
+			to{opacity: 0;}
+		}
 		@keyframes sister {
 			from{transform: rotate(360deg) translate(600px, 0);}
 			to{transform: rotate(0deg) translate(0, 0);}
@@ -50,6 +54,22 @@
 			60%{transform: rotate(20deg) translate(0, -300px);}
 			80%{transform: rotate(-5deg) translate(0, 25px);}
 			100%{transform: rotate(0deg) translate(0, 0);}
+		}
+		@keyframes uptext3 {
+			0%{transform: rotate(0deg) translate(0, 0);}
+			5%{transform: rotate(5deg) translate(0, 25px);}
+			20%{transform: rotate(-20deg) translate(0, -300px);}
+			80%{transform: rotate(20deg) translate(0, -300px);}
+			90%{transform: rotate(-5deg) translate(0, 25px);}
+			100%{transform: rotate(0deg) translate(0, 0);}
+		}
+		@keyframes left-right {
+			from {transform: translate(-565px, 0);}
+			to {transform: translate(0, 0);}
+		}
+		@keyframes right-left {
+			from {transform: translate(0, 0);}
+			to {transform: translate(-565px, 0);}
 		}
 		::-webkit-scrollbar {
 			width: 0;
@@ -78,6 +98,8 @@
 			margin-left: 0;
 			transition-duration: 0.4s;
 			transition-timing-function: ease;
+			animation-duration: 0.8s;
+			animation-fill-mode: forwards;
 		}
 		.img {
 			width: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000);
@@ -169,6 +191,47 @@
 			color: red;
 			background: yellow;
 		}
+		.backimg {
+			-webkit-mask-image: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+			mask-image: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+			z-index: -1;
+			background-color: #ADD8E6;
+			background-image: url(stix.jpg);
+			padding-top: calc(3em + 32px);
+			text-align: center;
+			color: #FF8C00;
+			font-size: 2em;
+			text-shadow: 2px 2px 5px #A9A9A9, 0 0 10px black;
+		}
+		.backimgsicreet {
+			position: fixed;
+			top: calc(3em + 32px);
+			left: 25px;
+			z-index: 0;
+			width: 500px;
+			color: #FF8C00;
+			font-size: 1.7em;
+			text-shadow: 0 0 10px black, 0 0 5px black;
+			display: none;
+			border-radius: 25px;
+			border: 3px dashed rgba(0, 0, 0, 0.3);
+			animation-duration: 0.4s;
+			animation-fill-mode: forwards;
+			background-color: rgba(0, 0, 0, 0.2);
+			padding: 20px;
+		}
+		.textcenter {
+			width: 500px;
+			margin: auto;
+			border: 3px dashed rgba(0, 0, 0, 0.4);
+			border-radius: 50px;
+			background-color: rgba(0, 0, 0, 0.3);
+		}
 	</style>
 </head>
 <body>
@@ -186,6 +249,33 @@
 	<center><span id="three"></span></center>
 	</div>
 	<div class="three"></div>
+	<div class="backimg">
+		<div class="textcenter">
+		<p>
+		Еду. Тихо. Слышны звоны<br>
+		Под копытом на снегу.<br>
+		Только серые вороны<br>
+		Расшумелись на лугу.
+		</p><p>
+		Заколдован невидимкой,<br>
+		Дремлет лес под сказку сна.<br>
+		Словно белою косынкой<br>
+		Повязалася сосна.
+		</p><p>
+		Понагнулась, как старушка,<br>
+		Оперлася на клюку,<br>
+		А под самою макушкой<br>
+		Долбит дятел на суку.
+		</p><p>
+		Скачет конь, простору много.<br>
+		Валит снег и стелет шаль.<br>
+		Бесконечная дорога<br>
+		Убегает лентой вдаль.</p>
+		</div>
+	</div>
+	<div class="backimgsicreet">
+		Перед нами великолепное стихотворение Сергея Есенина «Пороша». Название нам сразу показывает, что автор описывает холодное время года, и восхищается снегом, который припорошил землю. Мне очень понравилось, как автор описал сосну: «Понагнулась, как старушка, Оперлася на клюку», - эти слова, с помощью красочного сравнения, детализируют дерево. В лирическом стихотворении указывается всего лишь два, да и то схожих цвета: в словах «серые вороны» и «белою косынкой», и именно они отражают монохромность зимы. В произведении используются средства выразительности, такие как эпитеты, метафоры и олицетворения. Для примера возьмём олицетворение: «Дремлет лес под сказку сна», или метафору: «Заколдован невидимкой». Так или иначе, они все дополняют произведение и делают его красивее. Но всё таки, мне это стихотворение понравилось из-за своей красочности речи и необычного названия.
+	</div>
 	<div class="buttons">
 		<button id="last" style="opacity: 0.6;" onclick="lastButtonOnclick()" accesskey="l">назад</button><button id="next" onclick="nextButtonOnclick()" accesskey="n">вперёд</button>
 	</div>
@@ -195,6 +285,7 @@
 		var divimg = document.querySelector('.img');
 		var font = document.querySelector('font');
 		var sisters = document.querySelector('.sisters');
+		var backimg = document.querySelector('.backimg');
 		font.style.setProperty('display', 'none');
 		function fontTime() {font.textContent = 'Зимний вечер';}
 		function pagesLogic() {
@@ -203,6 +294,7 @@
 			spanThree.style.setProperty('display', 'none');
 			afterone.style.setProperty('display', 'none');
 			aftertwo.style.setProperty('display', 'none');
+			backimgsicreet.style.setProperty('display', 'none');
 			wiewstatus = false;
 			if (page === 0) {
 				h1.style.setProperty('animation-name', 'uptext');
@@ -240,19 +332,40 @@
 				sisters.style.setProperty('display', 'inline-block');
 			}
 			if (page === 2) {
-				h1.textContent = 'Гавриил Павлович Кондратенко';
+				h1.style.setProperty('animation-duration', '2s');
+				h1.style.setProperty('animation-name', 'uptext2');
+				setTimeout(function() {h1.textContent = 'Гавриил Павлович Кондратенко'; h1.style.setProperty('color', '#000000');}, 1000);
 				img.setAttribute('src', 'image.jpg');
 				img.style.setProperty('height', 'calc(calc(100vmin - 5em) - 108px)');
 				img.style.setProperty('width', 'calc(calc(calc(calc(100vmin - 5em) - 108px) / 716) * 1000)');
-				img.style.setProperty('margin-left', 'calc(calc(calc(100% - calc(calc(calc(100vmin - 5em) - 108px) / 716) * 1000))/2)');
+				divimg.style.setProperty('width', 'calc(calc(calc(calc(100vmin - 5em) - 108px) / 716) * 1000)');
+				img.style.setProperty('margin-left', '0');
+				divimg.style.setProperty('margin-left', 'calc(calc(calc(100% - calc(calc(calc(100vmin - 5em) - 108px) / 716) * 1000))/2)');
 				font.style.setProperty('display', 'inline');
-				font.style.setProperty('opacity', '1');
 				setTimeout(fontTime, 400);
-				font.style.setProperty('animation-name', 'textw2');
-				sisters.style.setProperty('display', 'block');
-				sisters.style.setProperty('transform', 'rotate(0deg) translate(0, 0)');
-				sisters.style.setProperty('animation-name', 'unsister');
-				setTimeout(function(){sisters.style.setProperty('display', 'none');}, 1400);
+				if (getComputedStyle(img).getPropertyValue('animation-name') === 'textw3') {
+					img.style.setProperty('animation-name', 'textw');
+					setTimeout(function() {img.style.setProperty('animation-name', '');}, 1000);
+					font.style.setProperty('opacity', '0');
+					setTimeout(function() {font.style.setProperty('opacity', '1');}, 600);
+					unbackimage();
+				}
+				else {
+					sisters.style.setProperty('display', 'block');
+					sisters.style.setProperty('transform', 'rotate(0deg) translate(0, 0)');
+					sisters.style.setProperty('animation-name', 'unsister');
+					setTimeout(function(){sisters.style.setProperty('display', 'none');}, 1400);
+					font.style.setProperty('opacity', '1');
+				}
+				font.style.setProperty('animation-name', 'textw2');	
+			}
+			if (page === 3) {//#1E90FF
+				h1.style.setProperty('animation-duration', '3s');
+				h1.style.setProperty('animation-name', 'uptext');
+				setTimeout(function() {h1.textContent = 'Сергей Есенин — Пороша'; h1.style.setProperty('color', '#1E90FF');}, 1000);
+				img.style.setProperty('animation-name', 'textw3');
+				font.style.setProperty('animation-name', 'textw3');
+				setTimeout(function() {backvidim = 0; backvidim2 = 0; backimage();}, 1000);
 			}
 		}
 	</script>
@@ -260,7 +373,7 @@
 		var last = document.querySelector('#last');
 		var next = document.querySelector('#next');
 		var page = 0;
-		var allpages = 2;
+		var allpages = 3;
 		function nextButtonOnclick() {
 			if (page < allpages) {
 				page++;
@@ -295,9 +408,72 @@
 		var afterone = document.querySelector('.afterone');
 		var aftertwo = document.querySelector('.aftertwo');
 		var divText = document.querySelector('.sicreetText');
+		var backimgsicreet = document.querySelector('.backimgsicreet');
 		var wiewstatus = false;
 		var vidim = 0;
 		var vidim2 = 0;
+		var backvidim = 0;
+		var backvidim2 = 0;
+		/*function backimage() {
+			backimg.style.setProperty('-webkit-mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + '), rgba(0, 0, 0, ' + String(backvidim2) + '), rgba(0, 0, 0, ' + String(backvidim3) + '), rgba(0, 0, 0, ' + String(backvidim4) + '), rgba(0, 0, 0, ' + String(backvidim5) + '))');
+			backimg.style.setProperty('mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + '), rgba(0, 0, 0, ' + String(backvidim2) + '), rgba(0, 0, 0, ' + String(backvidim3) + '), rgba(0, 0, 0, ' + String(backvidim4) + '), rgba(0, 0, 0, ' + String(backvidim5) + '))');
+			if (backvidim < 1) {
+				backvidim += 0.01;
+				setTimeout(backimage, 10);
+			}
+			else {
+				if (backvidim2 < 1) {
+					backvidim2 += 0.01;
+					setTimeout(backimage, 10);
+				}
+				else {
+					if (backvidim3 < 1) {
+						backvidim3 += 0.01;
+						setTimeout(backimage, 10);
+					}
+					else {
+						if (backvidim4 < 1) {
+							backvidim4 += 0.01;
+							setTimeout(backimage, 10);
+						}
+						else {
+							backvidim5 += 0.01;
+							if (backvidim5 < 1) {
+								setTimeout(backimage, 10);
+							}
+						}
+					}
+				}
+			}
+		}*/
+		function backimage() {
+			backimg.style.setProperty('-webkit-mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + ') ' + String(5 + (backvidim2 * 100)) + '%, rgba(0, 0, 0, 0) ' + String(50 + (backvidim2 * 100)) + '%)');
+			backimg.style.setProperty('mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + ') ' + String(5 + (backvidim2 * 100)) + '%, rgba(0, 0, 0, 0) ' + String(50 + (backvidim2 * 100)) + '%)');
+			if (backvidim < 1) {
+				backvidim += 0.02;
+				setTimeout(backimage, 10);
+			}
+			else {
+				backvidim2 += 0.02;
+				if (backvidim2 < 1) {
+					setTimeout(backimage, 10);
+				}
+			}
+		}
+		function unbackimage() {
+			backimg.style.setProperty('-webkit-mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + ') ' + String(5 + (backvidim2 * 100)) + '%, rgba(0, 0, 0, 0) ' + String(50 + (backvidim2 * 100)) + '%)');
+			backimg.style.setProperty('mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + ') ' + String(5 + (backvidim2 * 100)) + '%, rgba(0, 0, 0, 0) ' + String(50 + (backvidim2 * 100)) + '%)');
+			if (backvidim2 > 0) {
+				backvidim2 -= 0.02;
+				setTimeout(unbackimage, 10);
+			}
+			else {
+				backvidim -= 0.02;
+				if (backvidim > 0) {
+					setTimeout(unbackimage, 10);
+				}
+			}
+		}
 		function visition() {
 			divText.style.setProperty('-webkit-mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, ' + String(vidim2) + '))');
 			divText.style.setProperty('mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, ' + String(vidim2) + '))');
@@ -367,6 +543,11 @@
 					divText.style.setProperty('mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
 					setTimeout(visition, 10);
 				}
+				if (page === 3) {
+					backimgsicreet.style.setProperty('transform', 'translate(-565px, 0)');
+					backimgsicreet.style.setProperty('animation-name', 'left-right');
+					backimgsicreet.style.setProperty('display', 'block');
+				}
 			}
 			else {
 				wiewstatus = false;
@@ -375,6 +556,9 @@
 				divText.style.setProperty('-webkit-mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
 				divText.style.setProperty('mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
 				setTimeout(unvisition, 10);
+				backimgsicreet.style.setProperty('transform', 'translate(0, 0)');
+				backimgsicreet.style.setProperty('animation-name', 'right-left');
+				setTimeout(function() {backimgsicreet.style.setProperty('display', 'none');}, 400);
 			}
 		}
 	</script>
