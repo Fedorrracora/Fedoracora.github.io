@@ -63,6 +63,14 @@
 			90%{transform: rotate(-5deg) translate(0, 25px);}
 			100%{transform: rotate(0deg) translate(0, 0);}
 		}
+		@keyframes uptext4 {
+			from {width: 324px;}
+			to {width: 573px;}
+		}
+		@keyframes uptext5 {
+			from {width: 573px;}
+			to {width: 324px;}
+		}
 		@keyframes left-right {
 			from {transform: translate(-665px, 0);}
 			to {transform: translate(0, 0);}
@@ -78,6 +86,46 @@
 		@keyframes unrotating {
 			from {transform: skew(2deg, 3deg); box-shadow: -3px 3px 5px black inset, -3px 3px 5px black; text-shadow: -3px 3px 5px black;}
 			to {transform: skew(0, 0);}
+		}
+		@keyframes daving {
+			from {width: 60vw; background-size: 60vw calc(calc(60vw*801)/1230); }
+			to {width: 0; background-size: 0 calc(calc(60vw*801)/1230);}
+		}
+		@keyframes undaving {
+			from {transform: scaleX(0.0);}
+			to {transform: scaleX(1.0);}
+		}
+		@keyframes daving2 {
+			from {transform: scaleX(1.0);}
+			to {transform: scaleX(0.0);}
+		}
+		@keyframes undaving2 {
+			from {width: 0; background-size: 0 calc(calc(60vw*801)/1230);}
+			to {width: 60vw; background-size: 60vw calc(calc(60vw*801)/1230); }
+		}
+		@keyframes monoone {
+			from {transform: translate(650px, 0);}
+			to {transform: translate(0);}
+		}
+		@keyframes monotwo {
+			from {transform: scaleX(0.0);}
+			to {transform: scaleX(1.0);}
+		}
+		@keyframes monothree {
+			from {transform: scaleY(0.0);}
+			to {transform: scaleY(1.0);}
+		}
+		@keyframes monofour {
+			from {transform: scaleY(1.0);}
+			to {transform: scaleY(0.0);}
+		}
+		@keyframes monofive {
+			from {transform: scaleX(1.0);}
+			to {transform: scaleX(0.0);}
+		}
+		@keyframes monosix {
+			from {transform: translate(0);}
+			to {transform: translate(650px, 0);}
 		}
 		::-webkit-scrollbar {
 			width: 0;
@@ -95,10 +143,12 @@
 			margin: 0px;
 		}
 		h1 {
-			margin: 16px 0px 16px;
+			margin: 16px auto 16px;
 			text-align: center;
 			font-size: 3em;
 			animation-duration: 2s;
+			overflow: hidden;
+			white-space: nowrap;
 		}
 		img {
 			height: calc(calc(100vmin - 3em) - 98px);
@@ -216,7 +266,7 @@
 			color: #FF8C00;
 			font-size: 2em;
 			text-shadow: 2px 2px 5px #A9A9A9, 0 0 10px black;
-                        background-size: 100vw;
+			background-size: 100vw;
 		}
 		.backimgsicreet {
 			position: fixed;
@@ -249,6 +299,66 @@
 			border-radius: 50px;
 			background-color: rgba(0, 0, 0, 0.3);
 			backdrop-filter: blur(5px);
+			display: none;
+			animation-fill-mode: forwards;
+			animation-duration: 0.4s;
+		}
+		.imgcenter, .imgcenterun {
+			background-image: url(Sergey_Esenin2.jpg);
+			border-radius: 25px;
+			width: 60vw;
+			background-size: 60vw;
+			height: calc(calc(60vw*801)/1230);
+			margin: auto;
+			animation-duration: 0.4s;
+			animation-fill-mode: forwards;
+		}
+		.imgcenterun {
+			background-image: url(Sergey_Esenin2.png);
+			transform: scaleY(-1);
+			-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+			mask-image: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+		}
+		.monoxrom {
+			position: fixed;
+			right: 45px;
+			top: calc(3em + 32px);
+			padding: 25px;
+			border: 5px dashed rgba(0, 0, 0, 0.4);
+			border-radius: 25px;
+			background-color: rgba(0, 0, 0, 0.2);
+			width: 500px;
+			height: 366.5px;
+			font-size: 2em;
+			backdrop-filter: blur(5px);
+			color: #FF8C00;
+			transform: translate(650px, 0);
+			animation-duration: 0.4s;
+			animation-delay: 0.4s;
+			animation-fill-mode: forwards;
+		}
+		.monoup {
+			text-align: center;
+			font-size: 1.5em;
+			color: red;
+			display: inline-block;
+			width: 500px;
+			animation-duration: 0.4s;
+			animation-delay: 0.4s;
+			animation-fill-mode: forwards;
+			transform: scaleX(0.0);
+			padding-bottom: 15px;
+		}
+		.monodown {
+			display: inline-block;
+			width: 500px;
+			animation-duration: 0.4s;
+			animation-delay: 0.4s;
+			animation-fill-mode: forwards;
+			transform: scaleY(0.0);
+		}
+		.monoup::selection, .monodown::selection {
+			background: rgba(0, 0, 128, 0.5);
 		}
 	</style>
 </head>
@@ -268,6 +378,8 @@
 	</div>
 	<div class="three"></div>
 	<div class="backimg">
+		<div class="imgcenter"></div>
+		<div class="imgcenterun"></div>
 		<div class="textcenter">
 		<p>
 		Еду. Тихо. Слышны звоны<br>
@@ -292,8 +404,12 @@
 		</div>
 	</div>
 	<div class="backimgsicreet">
-		<p>Перед нами великолепное стихотворение Сергея Есенина «Пороша». Название нам сразу показывает, что автор описывает холодное время года, и восхищается снегом, который припорошил землю. Мне очень понравилось, как автор описал сосну: «Понагнулась, как старушка, Оперлася на клюку», - эти слова, с помощью красочного сравнения, детализируют дерево. В лирическом стихотворении указывается всего лишь два, да и то схожих цвета: в словах «серые вороны» и «белою косынкой», и именно они отражают монохромность зимы. В произведении используются средства выразительности, такие как метафоры, эпитеты, сравнения, инверсии и олицетворения, и они нужны для описания красоты леса и оживления стихотворения. Разберём каждый литературный приём по отдельности. Метафоры («заколдован невидимкой», «стелет шаль») требуются для создания красивых образов, для понимания "сути" произведения. Эпитеты («серые вороны», «белою косынкой», «бесконечная дорога») используются для красивого отражения признака объекта, что бы тот остался в памяти. Так же они нужны для максимального погружения читателя в стихотворение. Сравнения («понагнулась, как старушка», «словно белою косынкой» «дорога убегает лентой») совмещают в себе свойства и метафор, и эпитетов. Они нужны для создания ярких образов. Инверсии («повязалася сосна», «скачет конь») - это перестановка стандартного порядка слов. Она, в свою очередь, нужна для придачи для речи большей выразительности, особой интонации и подчёркивания значимости слов. Олицетворения ( «дремлет лес», «оперлася на клюку») позволяют придать какому-либо неодушевлённому предмету качества, чувства и черты одушевлённого предмета. Олицетворения, как и метафоры, нужны для декорирования и придачи особой выразительности стихотворению.</p>
-		<p>Именно в умении использовать все эти приёмы и заключается профессионализм автора. Но всё таки, мне это стихотворение понравилось из-за своей красочности речи и необычного названия.</p>
+		<p id="p1"></p>
+		<p id="p2"></p>
+	</div>
+	<div class="monoxrom">
+		<div class="monoup">Монохромность</div>
+		<div class="monodown">Монохромностью называют изображение, состоящее только из одного цвета, но с разной яркостью. К примеру, чёрно-белое изображение считается монохромным, так как чёрный цвет меняет свою насыщенность до белого.</div>
 	</div>
 	<div class="buttons">
 		<button id="last" style="opacity: 0.6;" onclick="lastButtonOnclick()" accesskey="l">назад</button><button id="next" onclick="nextButtonOnclick()" accesskey="n">вперёд</button>
@@ -305,6 +421,12 @@
 		var font = document.querySelector('font');
 		var sisters = document.querySelector('.sisters');
 		var backimg = document.querySelector('.backimg');
+		var esenin = document.querySelector('.imgcenter');
+		var eseninInverse = document.querySelector('.imgcenterun');
+		var textcenter = document.querySelector('.textcenter');
+		var monoxrom = document.querySelector('.monoxrom');
+		var monoup = document.querySelector('.monoup');
+		var monodown = document.querySelector('.monodown');
 		font.style.setProperty('display', 'none');
 		function fontTime() {font.textContent = 'Зимний вечер';}
 		function pagesLogic() {
@@ -353,7 +475,10 @@
 			if (page === 2) {
 				h1.style.setProperty('animation-duration', '2s');
 				h1.style.setProperty('animation-name', 'uptext2');
-				setTimeout(function() {h1.textContent = 'Гавриил Павлович Кондратенко'; h1.style.setProperty('color', '#000000');}, 1000);
+				setTimeout(function() {h1.textContent = 'Гавриил Павлович Кондратенко'; h1.style.setProperty('color', '#000000');
+					h1.style.setProperty('width', '100vw');
+					h1.style.setProperty('height', 'auto');
+				}, 1000);
 				img.setAttribute('src', 'image.jpg');
 				img.style.setProperty('height', 'calc(calc(100vmin - 5em) - 108px)');
 				img.style.setProperty('width', 'calc(calc(calc(calc(100vmin - 5em) - 108px) / 716) * 1000)');
@@ -379,12 +504,54 @@
 				font.style.setProperty('animation-name', 'textw2');	
 			}
 			if (page === 3) {
-				h1.style.setProperty('animation-duration', '3s');
-				h1.style.setProperty('animation-name', 'uptext');
-				setTimeout(function() {h1.textContent = 'Сергей Есенин — Пороша'; h1.style.setProperty('color', '#1E90FF');}, 1000);
+				if (getComputedStyle(h1).getPropertyValue('animation-name') === 'uptext2') {
+					h1.style.setProperty('animation-duration', '3s');
+					h1.style.setProperty('animation-name', 'uptext');
+					setTimeout(function() {backvidim = 0; backvidim2 = 0; backimage();}, 1000);
+					esenin.style.setProperty('display', 'block');
+					eseninInverse.style.setProperty('display', 'block');
+					textcenter.style.setProperty('display', 'none');
+				}
+				else {
+					textcenter.style.setProperty('animation-name', 'daving2');
+					setTimeout(function() {
+						textcenter.style.setProperty('display', 'none');
+						esenin.style.setProperty('animation-name', 'undaving2');
+						eseninInverse.style.setProperty('animation-name', 'undaving2');
+						esenin.style.setProperty('display', 'block');
+						eseninInverse.style.setProperty('display', 'block');
+						monodown.style.setProperty('transform', 'scaleY(1.0)');
+						monodown.style.setProperty('animation-name', 'monofour');
+						h1.style.setProperty('animation-name', 'uptext5');
+					}, 400);
+					setTimeout(function() {monoup.style.setProperty('transform', 'scaleX(1.0)');monoup.style.setProperty('animation-name', 'monofive'); h1.style.setProperty('width', '324px');}, 800);
+					setTimeout(function() {monoxrom.style.setProperty('transform', 'translate(0)');monoxrom.style.setProperty('animation-name', 'monosix');}, 1200);
+				}
+				setTimeout(function() {h1.textContent = 'Сергей Есенин: Пороша'; h1.style.setProperty('color', '#1E90FF');
+					h1.style.setProperty('width', '324px');
+					h1.style.setProperty('height', '55.5px');
+				}, 1000);
 				img.style.setProperty('animation-name', 'textw3');
 				font.style.setProperty('animation-name', 'textw3');
-				setTimeout(function() {backvidim = 0; backvidim2 = 0; backimage();}, 1000);
+			}
+			if (page === 4) {
+				esenin.style.setProperty('animation-name', 'daving');
+				eseninInverse.style.setProperty('animation-name', 'daving');
+				monodown.style.setProperty('transform', 'scaleY(0.0)');
+				monoup.style.setProperty('transform', 'scaleX(0.0)');
+				monoxrom.style.setProperty('transform', 'translate(650px, 0)');
+				//setTimeout(function() {h1.textContent = 'Сергей Есенин — Пороша'; h1.style.setProperty('color', '#1E90FF');}, 1000);
+				setTimeout(function() {
+					esenin.style.setProperty('display', 'none');
+					eseninInverse.style.setProperty('display', 'none');
+					textcenter.style.setProperty('animation-name', 'undaving');
+					textcenter.style.setProperty('display', 'block');
+					monoxrom.style.setProperty('animation-name', 'monoone');
+					h1.style.setProperty('animation-duration', '0.4s');
+					h1.style.setProperty('animation-name', 'uptext4');
+				}, 400);
+				setTimeout(function() {monoup.style.setProperty('animation-name', 'monotwo'); h1.style.setProperty('width', '573px');}, 800);
+				setTimeout(function() {monodown.style.setProperty('animation-name', 'monothree');}, 1200);
 			}
 		}
 	</script>
@@ -392,7 +559,7 @@
 		var last = document.querySelector('#last');
 		var next = document.querySelector('#next');
 		var page = 0;
-		var allpages = 3;
+		var allpages = 4;
 		function nextButtonOnclick() {
 			if (page < allpages) {
 				page++;
@@ -424,6 +591,8 @@
 		var spanOne = document.querySelector('#one');
 		var spanTwo = document.querySelector('#two');
 		var spanThree = document.querySelector('#three');
+		var p1 = document.querySelector('#p1');
+		var p2 = document.querySelector('#p2');
 		var afterone = document.querySelector('.afterone');
 		var aftertwo = document.querySelector('.aftertwo');
 		var divText = document.querySelector('.sicreetText');
@@ -531,6 +700,17 @@
 					setTimeout(visition, 10);
 				}
 				if (page === 3) {
+					p1.textContent = 'Человек по мнению Есенина является важной частью природы, поэтому между ними всегда можно увидеть связь. Из-за этого в лирических текстах поэта мы можем увидеть, как тесно переплетается человек и природа. Даже если в стихотворениях мы можем встретить неприятные образы, бедность и пороки, что добавляет некую грусть в общий смысл произведения, то это не омрачает его. Творец всё своё творчество пытается донести истину: крестьянская жизнь должна находиться в союзе с природой.';
+					p2.textContent = '';
+					backimgsicreet.style.setProperty('transform', 'translate(-665px, 0)');
+					backimgsicreet.style.setProperty('animation-name', 'left-right');
+					backimgsicreet.style.setProperty('display', 'block');
+					setTimeout(function() {backimgsicreet.style.setProperty('animation-duration', '0s'); backimgsicreet.style.setProperty('animation-name', 'unrotating'); backimgsicreet.style.setProperty('transform', 'translate(0, 0)');}, 400);
+					setTimeout(function() {backimgsicreet.style.setProperty('animation-duration', '0.4s');}, 800);
+				}
+				if (page === 4) {
+					p1.textContent = 'В 1914 году, в начале творчества поэта, появилось великолепное стихотворение Сергея Есенина «Пороша». Название нам сразу показывает, что автор описывает холодное время года, и восхищается снегом, который припорошил землю. В стихотворении описывается сосна, которая мне очень понравилась: «Понагнулась, как старушка, Оперлася на клюку», - эти слова, с помощью красочного сравнения, детализируют растение. Сергей Есенин не просто так выбрал именно хвойное дерево, ведь оно — признак загадочности, чего-то волшебного. Метафора «заколдован невидимкой» тоже создаёт такое чувство. В лирическом стихотворении указывается всего лишь два, да и то схожих цвета: в словах «серые вороны» и «белою косынкой», и именно они отражают монохромность* зимы. В произведении используются средства выразительности, такие как метафоры, эпитеты, сравнения, инверсии и олицетворения. Они нужны для описания красоты леса и оживления стихотворения. Разберём каждый литературный приём по отдельности. Метафоры («заколдован невидимкой», «стелет шаль») требуются для создания красивых образов, для понимания "сути" произведения. Эпитеты («серые вороны», «белою косынкой», «бесконечная дорога») используются для выразительного отражения признака объекта, что бы тот остался в памяти. Так же они нужны для максимального погружения читателя в стихотворение. Сравнения («понагнулась, как старушка», «словно белою косынкой» «дорога убегает лентой») совмещают в себе свойства и метафор, и эпитетов. Они нужны для создания ярких образов. Инверсии («повязалася сосна», «скачет конь») - это перестановка стандартного порядка слов. Она, в свою очередь, нужна для придания рече большей выразительности, особой интонации и подчёркивания значимости слов. Олицетворения ( «дремлет лес», «оперлася на клюку») позволяют добавить какому-либо неодушевлённому предмету качества, чувства и черты одушевлённого предмета. Они, как и метафоры, нужны для декорирования и придачи особой выразительности стихотворению.';
+					p2.textContent = 'Именно в умении использовать все эти приёмы и заключается индивидуальность авторского стиля. Но всё таки, мне это стихотворение понравилось из-за своей красочности речи и необычного названия.';
 					backimgsicreet.style.setProperty('transform', 'translate(-665px, 0)');
 					backimgsicreet.style.setProperty('animation-name', 'left-right');
 					backimgsicreet.style.setProperty('display', 'block');
