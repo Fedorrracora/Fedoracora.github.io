@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -103,6 +104,14 @@
 			from {width: 0; background-size: 0 calc(calc(60vw*801)/1230);}
 			to {width: 60vw; background-size: 60vw calc(calc(60vw*801)/1230); }
 		}
+		@keyframes undaving3 {
+			from {transform: scaleX(0.0) scaleY(-1.0);}
+			to {transform: scaleX(1.0) scaleY(-1.0);}
+		}
+		@keyframes daving3 {
+			from {transform: scaleX(1.0) scaleY(-1.0);}
+			to {transform: scaleX(0.0) scaleY(-1.0);}
+		}
 		@keyframes monoone {
 			from {transform: translate(650px, 0);}
 			to {transform: translate(0);}
@@ -136,6 +145,7 @@
 		}
 		html {
 			background-image: url(imagefone.jpg);
+			background-color: beige;
 			scroll-behavior: smooth;
 		}
 		body {
@@ -303,6 +313,10 @@
 			animation-fill-mode: forwards;
 			animation-duration: 0.4s;
 		}
+		#textcenter2 {
+			-webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+			mask-image: linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+		}
 		.imgcenter, .imgcenterun {
 			background-image: url(Sergey_Esenin2.jpg);
 			border-radius: 25px;
@@ -402,6 +416,28 @@
 		Бесконечная дорога<br>
 		Убегает лентой вдаль.</p>
 		</div>
+		<div class="textcenter" id="textcenter2">
+		<p>
+		Еду. Тихо. Слышны звоны<br>
+		Под копытом на снегу.<br>
+		Только серые вороны<br>
+		Расшумелись на лугу.
+		</p><p>
+		Заколдован невидимкой,<br>
+		Дремлет лес под сказку сна.<br>
+		Словно белою косынкой<br>
+		Повязалася сосна.
+		</p><p>
+		Понагнулась, как старушка,<br>
+		Оперлася на клюку,<br>
+		А под самою макушкой<br>
+		Долбит дятел на суку.
+		</p><p>
+		Скачет конь, простору много.<br>
+		Валит снег и стелет шаль.<br>
+		Бесконечная дорога<br>
+		Убегает лентой вдаль.</p>
+		</div>
 	</div>
 	<div class="backimgsicreet">
 		<p id="p1"></p>
@@ -424,6 +460,7 @@
 		var esenin = document.querySelector('.imgcenter');
 		var eseninInverse = document.querySelector('.imgcenterun');
 		var textcenter = document.querySelector('.textcenter');
+		var textcenter2 = document.querySelector('#textcenter2');
 		var monoxrom = document.querySelector('.monoxrom');
 		var monoup = document.querySelector('.monoup');
 		var monodown = document.querySelector('.monodown');
@@ -514,8 +551,10 @@
 				}
 				else {
 					textcenter.style.setProperty('animation-name', 'daving2');
+					textcenter2.style.setProperty('animation-name', 'daving3');
 					setTimeout(function() {
 						textcenter.style.setProperty('display', 'none');
+						textcenter2.style.setProperty('display', 'none');
 						esenin.style.setProperty('animation-name', 'undaving2');
 						eseninInverse.style.setProperty('animation-name', 'undaving2');
 						esenin.style.setProperty('display', 'block');
@@ -546,6 +585,8 @@
 					eseninInverse.style.setProperty('display', 'none');
 					textcenter.style.setProperty('animation-name', 'undaving');
 					textcenter.style.setProperty('display', 'block');
+					textcenter2.style.setProperty('animation-name', 'undaving3');
+					textcenter2.style.setProperty('display', 'block');
 					monoxrom.style.setProperty('animation-name', 'monoone');
 					h1.style.setProperty('animation-duration', '0.4s');
 					h1.style.setProperty('animation-name', 'uptext4');
