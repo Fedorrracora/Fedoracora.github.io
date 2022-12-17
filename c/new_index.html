@@ -756,7 +756,7 @@
 		var allpages = 5;
 		window.addEventListener('keydown', test);
 		function test(e) {
-//			alert (e.key);
+			//alert (e.key);
 			if ((e.key === "ArrowRight") || (e.key === " ")) {
 				nextButtonOnclick();
 			}
@@ -765,7 +765,7 @@
 					lastButtonOnclick();
 				}
 				else {
-					if (e.key === "f") {
+					if (((e.key === "f") || (e.key === "а")) || ((e.key === "F") || (e.key === "А"))) {
 						fullscreen();
 					}
 				}
