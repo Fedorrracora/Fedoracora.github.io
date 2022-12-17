@@ -135,6 +135,22 @@
 			from {transform: translate(0);}
 			to {transform: translate(650px, 0);}
 		}
+		@keyframes qup1 {
+			from {transform: translate(20vw, 100vh);}
+			to {transform: translate(20vw, 22vh);}
+		}
+		@keyframes qup2 {
+			from {transform: translate(60vw, 100vh);}
+			to {transform: translate(60vw, 20vh);}
+		}
+		@keyframes qup4 {
+			from {transform: translate(5vw, 100vh);}
+			to {transform: translate(5vw, calc(50vh + calc(131px + 2.875em)));}
+		}
+		@keyframes qdown4 {
+			from {transform: translate(5vw, calc(50vh + calc(131px + 2.875em)));}
+			to {transform: translate(5vw, 100vh);}
+		}
 		::-webkit-scrollbar {
 			width: 0;
 			height: 0;
@@ -150,6 +166,7 @@
 		body {
 			font-size: 100%;
 			margin: 0px;
+			overflow: hidden;
 		}
 		h1 {
 			margin: 16px auto 16px;
@@ -376,6 +393,83 @@
 			background: rgba(0, 0, 128, 0.5);
 			text-shadow: none;
 		}
+		.backimgq {
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			z-index: -2;
+			background-color: #008000;
+			background-image: url(quetion2.jpg);
+			display: none;
+			background-size: 100vw 100vh;
+			filter: saturate(0.8);
+		}
+		.quetion {
+			width: 0px;
+			height: 0px;
+			animation-duration: 1s;
+			animation-delay: 1s;
+			animation-fill-mode: forwards;
+		}
+		#q1 {
+			transform: translate(20vw, 100vh);
+			filter: saturate(1.25);
+		}
+		#q2 {
+			transform: translate(60vw, 100vh);
+			filter: saturate(1.25);
+		}
+		.quetionIn {
+			width: 20vw;
+			height: calc(calc(20vw * 1280) / 912);
+			background-image: url(question2.png);
+			background-size: 20vw calc(calc(20vw * 1280) / 912);
+			filter: saturate(0.8);
+		}
+		#q1In {
+			transform: rotate(345deg);
+		}
+
+		#q2In {
+			transform: rotate(15deg);
+		}
+		#q3In {
+			width: 1000px;
+			height: calc(192px + 5.75em);
+			text-align: center;
+			transform: translate(calc(50vw - 500px), calc(47.5vh - calc(96px + 2.875em)));
+			font-size: 2em;
+			border: 1px solid #FFD700;
+			color: #FFD700;
+			border-radius: 25px;
+			backdrop-filter: blur(10px);
+			background-color: rgba(0, 0, 0, 0.2);
+			filter: saturate(1.25);
+		}
+		#q3In p:first-child {
+			font-size: 1.5em;
+			color: red;
+		}
+		#q4In {
+			width: 90vw;
+			transform: translate(5vw, 100vh);
+			height: calc(11em + 15px);
+			font-size: 1.5em;
+			border: 1px solid #FFD700;
+			color: #FFD700;
+			border-radius: 25px;
+			backdrop-filter: blur(10px);
+			background-color: rgba(0, 0, 0, 0.2);
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			display: none;
+			filter: saturate(1.25);
+		}
+		#q4In p {
+			margin: 10px 10px;
+		}
 	</style>
 </head>
 <body>
@@ -441,6 +535,28 @@
 		Убегает лентой вдаль.</p>
 		</div>
 	</div>
+	<div class="backimgq">
+		<div class="quetion" id="q1">
+			<div class="quetionIn" id="q1In"></div>
+		</div>
+		<div class="quetion" id="q2">
+			<div class="quetionIn" id="q2In"></div>
+		</div>
+		<div class="quetion">
+			<div id="q3In">
+				<p>Вопросы:</p>
+				<p>Одинаково или по-разному увидели авторы это время года?</p>
+				<p>Какие образы они создали, чтобы передать настроение этой поры?</p>
+				<p>Удалось ли им изобразить на полотне и словами своеобразие и красоту русской зимы?</p>
+			</div>
+		</div>
+		<div class="quetion">
+			<div id="q4In">
+				<p>Человек, по мнению Есенина, является важной частью природы, поэтому между ними всегда можно увидеть связь. В лирических текстах поэта мы можем наблюдать за тем, как тесно переплетается человек и природа. Даже если в стихотворениях мы можем встретить отрицательные образы, бедность и пороки, что добавляет некую грусть в общий смысл произведения, то это не омрачает его. Творец пытается донести истину: крестьянская жизнь должна находиться в союзе с природой. Зачастую художественное раскрытие природных образов проявляется через приём олицетворения, из-за чего её почти невозможно отделить от образа лирического героя. Наиболее часто автор описывает деревья - берёзу, сравнивая её с воспоминаниями о малой Родине. Как говорил М. Эпштейн: «береза во многом благодаря Есенину стала национальным поэтическим символом России.» На втором месте у стихотворца ива — девушка, чей образ связан с печалью и разлукой.</p>
+				<p>Умение связывать простые и привычные вещи с чем-то большим прослеживается у писателя не только в изображении деревьев. К примеру, образ осени обозначает скорый приход зимы, серости, глухости, старости. Однако в холодное время всё не так плохо, ведь оно с стихах поэта ассоциируется с любящей матерью, поющей колыбельную, или наоборот - со Снежной Королевой.</p>
+			</div>
+		</div>
+	</div>
 	<div class="backimgsicreet">
 		<p id="p1"></p>
 		<p id="p2"></p>
@@ -459,6 +575,7 @@
 		var font = document.querySelector('font');
 		var sisters = document.querySelector('.sisters');
 		var backimg = document.querySelector('.backimg');
+		var backimgq = document.querySelector('.backimgq');
 		var esenin = document.querySelector('.imgcenter');
 		var eseninInverse = document.querySelector('.imgcenterun');
 		var textcenter = document.querySelector('.textcenter');
@@ -466,6 +583,8 @@
 		var monoxrom = document.querySelector('.monoxrom');
 		var monoup = document.querySelector('.monoup');
 		var monodown = document.querySelector('.monodown');
+		var q1 = document.querySelector('#q1');
+		var q2 = document.querySelector('#q2');
 		font.style.setProperty('display', 'none');
 		function fontTime() {font.textContent = 'Зимний вечер';}
 		function pagesLogic() {
@@ -475,6 +594,7 @@
 			afterone.style.setProperty('display', 'none');
 			aftertwo.style.setProperty('display', 'none');
 			backimgsicreet.style.setProperty('display', 'none');
+			setTimeout(function() {q4In.style.setProperty('display', 'none');}, 1000);
 			wiewstatus = false;
 			if (page === 0) {
 				h1.style.setProperty('animation-name', 'uptext');
@@ -581,7 +701,22 @@
 				monodown.style.setProperty('transform', 'scaleY(0.0)');
 				monoup.style.setProperty('transform', 'scaleX(0.0)');
 				monoxrom.style.setProperty('transform', 'translate(650px, 0)');
-				//setTimeout(function() {h1.textContent = 'Сергей Есенин — Пороша'; h1.style.setProperty('color', '#1E90FF');}, 1000);
+				if (getComputedStyle(backimgq).getPropertyValue('display') === 'block') {
+					setTimeout(function() {backimgq.style.setProperty('display', 'none');}, 2000);
+					setTimeout(function() {backvidim = 0; backvidim2 = 0; backimage();}, 100);
+					h1.style.setProperty('animation-name', 'uptext');
+					setTimeout(function() {h1.textContent = 'Сергей Есенин: Пороша'; h1.style.setProperty('color', '#1E90FF');
+						h1.style.setProperty('width', '573px');
+						h1.style.setProperty('height', '55.5px');
+					}, 1000);
+					setTimeout(function() {h1.style.setProperty('animation-duration', '0.4s');}, 3100);
+				}
+				else {
+					setTimeout(function() {
+						h1.style.setProperty('animation-duration', '0.4s');
+						h1.style.setProperty('animation-name', 'uptext4');
+					}, 400);
+				}
 				setTimeout(function() {
 					esenin.style.setProperty('display', 'none');
 					eseninInverse.style.setProperty('display', 'none');
@@ -590,11 +725,26 @@
 					textcenter2.style.setProperty('animation-name', 'undaving3');
 					textcenter2.style.setProperty('display', 'block');
 					monoxrom.style.setProperty('animation-name', 'monoone');
-					h1.style.setProperty('animation-duration', '0.4s');
-					h1.style.setProperty('animation-name', 'uptext4');
 				}, 400);
-				setTimeout(function() {monoup.style.setProperty('animation-name', 'monotwo'); h1.style.setProperty('width', '573px');}, 800);
+				setTimeout(function() {monoup.style.setProperty('animation-name', 'monotwo'); h1.style.setProperty('width', '573px');}, 800); h1.style.setProperty('text-shadow', 'none');
 				setTimeout(function() {monodown.style.setProperty('animation-name', 'monothree');}, 1200);
+
+			}
+			if (page === 5) {
+				unbackimage();
+				monodown.style.setProperty('transform', 'scaleY(1.0)');
+				monodown.style.setProperty('animation-name', 'monofour');
+				backimgq.style.setProperty('display', 'block');
+				h1.style.setProperty('animation-duration', '3s');
+				h1.style.setProperty('animation-name', 'uptext2');
+				q1.style.setProperty('animation-name', 'qup1');
+				q2.style.setProperty('animation-name', 'qup2');
+				setTimeout(function() {h1.textContent = 'Сравнение'; h1.style.setProperty('color', '#FFD700'); h1.style.setProperty('text-shadow', '5px 5px 5px black');
+					h1.style.setProperty('width', 'auto');
+					h1.style.setProperty('height', 'auto');
+				}, 1000);
+				setTimeout(function() {monoup.style.setProperty('transform', 'scaleX(1.0)');monoup.style.setProperty('animation-name', 'monofive');}, 400);
+				setTimeout(function() {monoxrom.style.setProperty('transform', 'translate(0)');monoxrom.style.setProperty('animation-name', 'monosix');}, 800);
 			}
 		}
 	</script>
@@ -602,7 +752,24 @@
 		var last = document.querySelector('#last');
 		var next = document.querySelector('#next');
 		var page = 0;
-		var allpages = 4;
+		var allpages = 5;
+		window.addEventListener('keydown', test);
+		function test(e) {
+//			alert (e.key);
+			if ((e.key === "ArrowRight") || (e.key === " ")) {
+				nextButtonOnclick();
+			}
+			else {
+				if (e.key === "ArrowLeft") {
+					lastButtonOnclick();
+				}
+				else {
+					if (e.key === "f") {
+						fullscreen();
+					}
+				}
+			}
+		}
 		function nextButtonOnclick() {
 			if (page < allpages) {
 				page++;
@@ -636,6 +803,7 @@
 		var spanThree = document.querySelector('#three');
 		var p1 = document.querySelector('#p1');
 		var p2 = document.querySelector('#p2');
+		var q4In = document.querySelector('#q4In');
 		var afterone = document.querySelector('.afterone');
 		var aftertwo = document.querySelector('.aftertwo');
 		var divText = document.querySelector('.sicreetText');
@@ -664,6 +832,7 @@
 			backimg.style.setProperty('mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + ') ' + String(5 + (backvidim2 * 100)) + '%, rgba(0, 0, 0, 0) ' + String(50 + (backvidim2 * 100)) + '%)');
 			if (backvidim2 > 0) {
 				backvidim2 -= 0.02;
+				backvidim -= 0.01;
 				setTimeout(unbackimage, 10);
 			}
 			else {
@@ -760,6 +929,10 @@
 					setTimeout(function() {backimgsicreet.style.setProperty('animation-duration', '0s'); backimgsicreet.style.setProperty('animation-name', 'unrotating'); backimgsicreet.style.setProperty('transform', 'translate(0, 0)');}, 400);
 					setTimeout(function() {backimgsicreet.style.setProperty('animation-duration', '0.4s');}, 800);
 				}
+				if (page === 5) {
+					q4In.style.setProperty('display', 'block');
+					q4In.style.setProperty('animation-name', 'qup4');
+				}
 			}
 			else {
 				wiewstatus = false;
@@ -771,6 +944,8 @@
 				backimgsicreet.style.setProperty('transform', 'translate(0, 0)');
 				backimgsicreet.style.setProperty('animation-name', 'right-left');
 				setTimeout(function() {backimgsicreet.style.setProperty('display', 'none');}, 400);
+				q4In.style.setProperty('animation-name', 'qdown4');
+				setTimeout(function() {q4In.style.setProperty('display', 'none')}, 1000);
 			}
 		}
 	</script>
