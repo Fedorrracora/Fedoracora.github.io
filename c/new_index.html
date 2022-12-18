@@ -74,12 +74,12 @@
 			to {width: 324px;}
 		}
 		@keyframes left-right {
-			from {transform: translate(-665px, 0);}
+			from {transform: translate(-675px, 0);}
 			to {transform: translate(0, 0);}
 		}
 		@keyframes right-left {
 			from {transform: translate(0, 0);}
-			to {transform: translate(-665px, 0);}
+			to {transform: translate(-675px, 0);}
 		}
 		@keyframes rotateing {
 			from {transform: skew(0, 0);}
@@ -602,15 +602,14 @@
 		font.style.setProperty('display', 'none');
 		function fontTime() {font.textContent = 'Зимний вечер';}
 		function pagesLogic() {
-			spanOne.style.setProperty('display', 'none');
-			spanTwo.style.setProperty('display', 'none');
-			spanThree.style.setProperty('display', 'none');
-			afterone.style.setProperty('display', 'none');
-			aftertwo.style.setProperty('display', 'none');
-			backimgsicreet.style.setProperty('display', 'none');
+			divText.style.setProperty('-webkit-mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
+			divText.style.setProperty('mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
+			setTimeout(unvisition, 10);
+			backimgsicreet.style.setProperty('animation-name', 'right-left');
 			q3In.style.setProperty('animation-name', 'qdown3');
 			q4In.style.setProperty('animation-name', 'qdown4');
-			setTimeout(function() {q4In.style.setProperty('display', 'none');}, 1000);
+			window.location.href = '#';
+			setTimeout(function() {q4In.style.setProperty('display', 'none'); backimgsicreet.style.setProperty('display', 'none');}, 1000);
 			wiewstatus = false;
 			if (page === 0) {
 				h1.style.setProperty('animation-name', 'uptext');
