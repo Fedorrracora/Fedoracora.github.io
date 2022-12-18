@@ -145,12 +145,20 @@
 			from {transform: translate(60vw, 100vh);}
 			to {transform: translate(60vw, 20vh);}
 		}
+		@keyframes qup3 {
+			from {transform: translate(calc(50vw - 500px), calc(47.5vh - calc(96px + 2.875em)));}
+			to {transform: translate(calc(50vw - 500px), calc(32px + 2em));}
+		}
+		@keyframes qdown3 {
+			from {transform: translate(calc(50vw - 500px), calc(32px + 2em));}
+			to {transform: translate(calc(50vw - 500px), calc(47.5vh - calc(96px + 2.875em)));}
+		}
 		@keyframes qup4 {
 			from {transform: translate(5vw, 100vh);}
-			to {transform: translate(5vw, calc(50vh + calc(131px + 2.875em)));}
+			to {transform: translate(5vw, calc(305px + 7.75em));}
 		}
 		@keyframes qdown4 {
-			from {transform: translate(5vw, calc(50vh + calc(131px + 2.875em)));}
+			from {transform: translate(5vw, calc(305px + 7.75em));}
 			to {transform: translate(5vw, 100vh);}
 		}
 		::-webkit-scrollbar {
@@ -450,6 +458,8 @@
 			backdrop-filter: blur(10px);
 			background-color: rgba(0, 0, 0, 0.2);
 			filter: saturate(1.25);
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
 		}
 		#q3In p:first-child {
 			font-size: 1.5em;
@@ -458,7 +468,7 @@
 		#q4In {
 			width: 90vw;
 			transform: translate(5vw, 100vh);
-			height: calc(11em + 15px);
+			height: auto;
 			font-size: 1.5em;
 			border: 1px solid #FFD700;
 			color: #FFD700;
@@ -597,6 +607,8 @@
 			afterone.style.setProperty('display', 'none');
 			aftertwo.style.setProperty('display', 'none');
 			backimgsicreet.style.setProperty('display', 'none');
+			q3In.style.setProperty('animation-name', 'qdown3');
+			q4In.style.setProperty('animation-name', 'qdown4');
 			setTimeout(function() {q4In.style.setProperty('display', 'none');}, 1000);
 			wiewstatus = false;
 			if (page === 0) {
@@ -806,6 +818,7 @@
 		var spanThree = document.querySelector('#three');
 		var p1 = document.querySelector('#p1');
 		var p2 = document.querySelector('#p2');
+		var q3In = document.querySelector('#q3In');
 		var q4In = document.querySelector('#q4In');
 		var afterone = document.querySelector('.afterone');
 		var aftertwo = document.querySelector('.aftertwo');
@@ -935,6 +948,7 @@
 				if (page === 5) {
 					q4In.style.setProperty('display', 'block');
 					q4In.style.setProperty('animation-name', 'qup4');
+					q3In.style.setProperty('animation-name', 'qup3');
 				}
 			}
 			else {
@@ -948,6 +962,7 @@
 				backimgsicreet.style.setProperty('animation-name', 'right-left');
 				setTimeout(function() {backimgsicreet.style.setProperty('display', 'none');}, 400);
 				q4In.style.setProperty('animation-name', 'qdown4');
+				q3In.style.setProperty('animation-name', 'qdown3');
 				setTimeout(function() {q4In.style.setProperty('display', 'none')}, 1000);
 			}
 		}
