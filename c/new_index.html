@@ -33,6 +33,10 @@
 			from{opacity: 1;}
 			to{opacity: 0;}
 		}
+		@keyframes textw4 {
+			0%{opacity: 1;}
+			100%{opacity: 0; display:none;}
+		}
 		@keyframes sister {
 			from{transform: rotate(360deg) translate(600px, 0);}
 			to{transform: rotate(0deg) translate(0, 0);}
@@ -161,6 +165,14 @@
 			from {transform: translate(5vw, calc(305px + 7.75em));}
 			to {transform: translate(5vw, 100vh);}
 		}
+		@keyframes buttons {
+			from {transform: translate(0, 30px);}
+			to {transform: translate(0);}
+		}
+		@keyframes h1s {
+			from {transform: translate(0, calc(-1 * calc(32px + 2em)));}
+			to {transform: translate(0);}
+		}
 		::-webkit-scrollbar {
 			width: 0;
 			height: 0;
@@ -184,6 +196,7 @@
 			text-align: center;
 			font-size: 3em;
 			animation-duration: 2s;
+			animation-name: h1s;
 			overflow: hidden;
 			white-space: nowrap;
 		}
@@ -193,8 +206,9 @@
 			margin-left: 0;
 			transition-duration: 0.4s;
 			transition-timing-function: ease;
-			animation-duration: 0.8s;
+			animation-duration: 5s;
 			animation-fill-mode: forwards;
+			animation-name: textw;
 			border-radius: 10px;
 		}
 		.img {
@@ -214,6 +228,11 @@
 			left: calc(50% - 60px);
 			width: 120px;
 			height: 20px;
+			animation-name: buttons;
+			animation-duration: 1s;
+			animation-delay: 1s;
+			transform: translate(0, 30px);
+			animation-fill-mode: forwards;
 		}
 		button {
 			transition-duration: 0.4s;
@@ -483,6 +502,22 @@
 		#q4In p {
 			margin: 10px 10px;
 		}
+		#down {
+			height: 0;
+			display: inline;
+		}
+		.full {
+			animation-duration: 5s;
+			animation-fill-mode: forwards;
+			animation-name: textw4;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: -10;
+			background-color: beige;
+			width: 100vw;
+			height: 100vh;
+		}
 	</style>
 </head>
 <body>
@@ -498,6 +533,7 @@
 	<center><span id="two"></span></center>
 	<div class="aftertwo"></div>
 	<center><span id="three"></span></center>
+	<span name="down" id="down"></span>
 	</div>
 	<div class="three"></div>
 	<div class="backimg">
@@ -582,6 +618,7 @@
 	<div class="buttons">
 		<button id="last" style="opacity: 0.6;" onclick="lastButtonOnclick()" accesskey="l">назад</button><button id="next" onclick="nextButtonOnclick()" accesskey="n">вперёд</button>
 	</div>
+	<div class="full"></div>
 	<script type="text/javascript">//pagesLogic
 		var h1 = document.querySelector('h1');
 		var img = document.querySelector('img');
@@ -630,6 +667,7 @@
 				setTimeout(function(){sisters.style.setProperty('display', 'none');}, 1400);
 			}
 			if (page === 1) {
+				img.style.setProperty('animation-duration', '0.8s');
 				h1.style.setProperty('animation-name', 'uptext2');
 				setTimeout(function() {h1.textContent = 'Гавриил Павлович Кондратенко';}, 1000);
 				img.setAttribute('src', 'Ночь в батихасе.jpg');
@@ -911,6 +949,7 @@
 					afterone.style.setProperty('display', 'block');
 					spanOne.textContent = 'Гавриил Павлович Кондратенко родился 21 марта 1854 года в селе Павло-Куракино Городищевского уезда Пензенской губернии. Ещё в маленьком возрасте он очень сильно заинтересовался искусством. В свои 17 лет творец становится вольноприходящим учеником Императорской Академии художеств в Санкт-Петербурге, которую успешно заканчивает в 1882 году на малую золотую медаль за картину «Ночь в Бахчисарае». В последствии у художника окончательно установился свой стиль. В основном он рисует только летние и зимние пейзажи, на первых - тщательно работает с эффектом лунного освещения, а на вторых - делает акцент на более «спокойных» тонах, чтобы передать чувство умиротворения. Но все его картины отличаются большой детальностью и проработанностью.';
 					spanTwo.textContent = 'Во время одной из своих поездок в Крым в 1880-х годах у Гавриила Павловича происходит неожиданная встреча, которая очень сильно повлияла на его жизнь. Он встретил в Севастополе нищую женщину, про которую вскоре узнал, что она в прошлом была сестрой милосердия*. Художник, как человек неравнодушный, решил помочь, и, приехав в Санкт-Петербург, организовал благотворительную выставку в пользу нищих. В итоге его «стараний» была организована новая организация - «Санкт-Петербургский попечительский комитет о сёстрах Красного креста». В последствии она была дважды переименована, сначала в «Общину святой Евгении» (когда этот комитет курировала принцесса Евгения Максимилиановна Ольденбургская), а потом в «Комитет популяризации художественных изданий» (КПХИ). Кондратенко вместе с общиной стал издавать иллюстрированные открытки, чтобы привлечь денежные средства и сделать помощь сёстрам милосердия более эффективной. Деятельность организации прекратилась лишь в 1930 году, то есть спустя примерно 50 лет.';
+					window.location.href = '#down';
 					vidim = 0;
 					vidim2 = 0;
 					divText.style.setProperty('-webkit-mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
@@ -926,6 +965,7 @@
 					spanOne.textContent = 'Во время существования КПХИ Гавриил Павлович Кондратенко нарисовал картину «Зимний вечер», деньги с продажи которой тоже ушли на благотворительность. На ней автор сумел показать сразу и суровость, и красоту русской зимы. Всё изображено в тёплых тонах, из-за чего, как и на других его снежных картинах, возникает чувство умиротворения. Создатель смог очень реалистично передать признаки холода, и мы с первого взгляда видим кропотливую работу художника. По сугробам, лежащим на крышах толстым слоем и выгледящими мокрыми, мы понимаем, что сейчас конец холодного времени года. Так же сразу видно, что это вечер, ведь в домах светятся окна. Название картины подтверждает этот факт. Так как листья растений неподвижны и покрыты инеем, становится ясно, что погода морозная и безветренная. На переднем плане мы видим деревянный мост, сколоченный из пары досок, по которому проезжает вереница саней. А рядом с повозками идут усталые люди, торопящиеся вернуться домой. Так же на мосту находятся чёрные птицы, и это нам говорит, что в повозках имеется зерно, которое сыпется на дорогу, и пернатые его едят.';
 					spanTwo.textContent = 'В народе существует поверье, что если в печи горит красный огонь, то скоро настанет мороз. Если присмотреться, то пламя, которое отражается в окнах домов, именно такого цвета, так что можно предсказать будущее. Но присутствуют признаки и обратного. На картине изображены перелётные птицы, которые в конце зимы приносят за собой тепло и лето.';
 					spanThree.textContent = 'Мне эта картина очень понравилась из-за своей детальности и реалистичности, и я всем советую обращать больше внимания на творения русских художников.';
+					window.location.href = '#down';
 					vidim = 0;
 					vidim2 = 0;
 					divText.style.setProperty('-webkit-mask-image', 'linear-gradient(rgba(0, 0, 0, ' + String(vidim) + '), rgba(0, 0, 0, 1))');
