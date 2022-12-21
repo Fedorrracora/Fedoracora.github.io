@@ -851,7 +851,17 @@
 				}
 			}
 			else if ((e.key === aboba[0]) && (page === 0)) {
-				abcounter = 1;
+				if (abcounter !== 0) {
+					if (aboba[abcounter-1] === aboba[0]) {
+						abcounter = 2;
+					}
+					else {
+						abcounter = 1;
+					}
+				}
+				else {
+					abcounter = 1;
+				}
 			}
 			else {
 				abcounter = 0;
