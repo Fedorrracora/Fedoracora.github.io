@@ -526,11 +526,24 @@
 			position: fixed;
 			top: 0;
 			left: 0;
-			z-index: 2;
+			z-index: 3;
 			background-color: beige;
 			background-image: url(imagefone.jpg);
 			width: 100vw;
 			height: 100vh;
+		}
+		.abimg {
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			animation-name: textw;
+			position: fixed;
+			top: calc(50vh - calc(calc(calc(100vmin - 3em) - 98px) / 10));
+			left: calc(50vw - calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 100));
+			z-index: 2;
+			background-image: url(vs.png);
+			background-size: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 200) calc(calc(calc(100vmin - 3em) - 98px) / 5);
+			height: calc(calc(calc(100vmin - 3em) - 98px) / 5);
+			width: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 200);
 		}
 	</style>
 </head>
@@ -662,6 +675,7 @@
 			window.location.href = '#';
 			setTimeout(function() {q4In.style.setProperty('display', 'none'); backimgsicreet.style.setProperty('display', 'none');}, 1000);
 			wiewstatus = false;
+			abimg.remove();
 			if (page === 0) {
 				h1.style.setProperty('animation-name', 'uptext');
 				setTimeout(function() {h1.textContent = 'Сравнение картины и стихотворения';}, 1000);
@@ -820,13 +834,24 @@
 		var next = document.querySelector('#next');
 		var page = 0;
 		var allpages = 5;
+		var aboba = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'a', 'b', 'Enter'];
+		var abcounter = 0;
 		window.addEventListener('keydown', test);
 		function test(e) {
 			//alert (e.key);
 			if (((e.key === "h") || (e.key === "р")) || ((e.key === "H") || (e.key === "Р"))) {
 				hide();
 			}
+			else if ((e.key === aboba[abcounter]) && (page === 0)) {
+				abcounter++;
+				if (abcounter === 11) {
+					alert('aboba');
+					h1.before(abimg);
+					abcounter = 0;
+				}
+			}
 			else {
+				abcounter = 0;
 				if (((e.key === "f") || (e.key === "а")) || ((e.key === "F") || (e.key === "А"))) {
 					fullscreen();
 				}
@@ -896,6 +921,8 @@
 		var hideDiv = document.createElement('div');
 		var hideDivStatus = false;
 		hideDiv.setAttribute('class', 'hideDiv');
+		var abimg = document.createElement('div');
+		abimg.setAttribute('class', 'abimg');
 		function hide() {
 			if (hideDivStatus === false) {
 				hideDivStatus = true;
