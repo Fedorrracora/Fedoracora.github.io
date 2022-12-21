@@ -519,6 +519,18 @@
 			width: 100vw;
 			height: 100vh;
 		}
+		.hideDiv {
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			animation-name: textw;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 2;
+			background-color: beige;
+			width: 100vw;
+			height: 100vh;
+		}
 	</style>
 </head>
 <body>
@@ -810,20 +822,27 @@
 		window.addEventListener('keydown', test);
 		function test(e) {
 			//alert (e.key);
-			if ((e.key === "ArrowRight") || (e.key === " ")) {
-				nextButtonOnclick();
+			if (((e.key === "h") || (e.key === "р")) || ((e.key === "H") || (e.key === "Р"))) {
+				hide();
 			}
 			else {
-				if (e.key === "ArrowLeft") {
-					lastButtonOnclick();
+				if (((e.key === "f") || (e.key === "а")) || ((e.key === "F") || (e.key === "А"))) {
+					fullscreen();
 				}
 				else {
-					if (((e.key === "f") || (e.key === "а")) || ((e.key === "F") || (e.key === "А"))) {
-						fullscreen();
-					}
-					else {
-						if (((e.key === "i") || (e.key === "ш")) || ((e.key === "I") || (e.key === "Ш"))) {
-							imageOnclick();
+					if (hideDivStatus === false) {
+						if ((e.key === "ArrowRight") || (e.key === " ")) {
+							nextButtonOnclick();
+						}
+						else {
+							if (e.key === "ArrowLeft") {
+								lastButtonOnclick();
+							}
+							else {
+								if (((e.key === "i") || (e.key === "ш")) || ((e.key === "I") || (e.key === "Ш"))) {
+									imageOnclick();
+								}
+							}
 						}
 					}
 				}
@@ -873,6 +892,21 @@
 		var vidim2 = 0;
 		var backvidim = 0;
 		var backvidim2 = 0;
+		var hideDiv = document.createElement('div');
+		var hideDivStatus = false;
+		hideDiv.setAttribute('class', 'hideDiv');
+		function hide() {
+			if (hideDivStatus === false) {
+				hideDivStatus = true;
+				hideDiv.style.setProperty('animation-name', 'textw');
+				h1.before(hideDiv);
+			}
+			else {
+				hideDivStatus = false;
+				hideDiv.style.setProperty('animation-name', 'textw3');
+				setTimeout(function () {hideDiv.remove();}, 1000);
+			}
+		}
 		function backimage() {
 			backimg.style.setProperty('-webkit-mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + ') ' + String(5 + (backvidim2 * 100)) + '%, rgba(0, 0, 0, 0) ' + String(50 + (backvidim2 * 100)) + '%)');
 			backimg.style.setProperty('mask-image', 'radial-gradient(rgba(0, 0, 0, ' + String(backvidim) + ') ' + String(5 + (backvidim2 * 100)) + '%, rgba(0, 0, 0, 0) ' + String(50 + (backvidim2 * 100)) + '%)');
