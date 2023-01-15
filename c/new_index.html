@@ -578,24 +578,19 @@
 			width: 80px;
 			height: 150vmax;
 			filter: blur(5px);
-			background-image: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0));
+			background-image: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0));
 			overflow: visible;
 			position: fixed;
 			top: 0;
-			animation-duration: 5s;
+			animation-duration: 4s;
 			animation-name: blurframes;
 			animation-iteration-count: infinite;
 		}
-		/*.esenintext {
-			width: 150vw;
-			height: 150vh;
-			background-color: white;
-			transform: rotate(54.45deg) translate(calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 500), 700px);
-			display: none;
-		}*/
 		.esenintext {
 			height: calc(calc(calc(100vmin - 3em) - 98px) + 200vmax);
 			width: calc(calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000) + 200vmax);
+			/*background-image: url(stix.jpg);
+			-webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1) 50%);*/
 			background-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1) 50%);
 			transform: translate(-100vmax, -100vmax) rotate(0deg);
 			animation-delay: 1s;
