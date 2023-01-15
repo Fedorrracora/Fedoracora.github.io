@@ -12,7 +12,7 @@
 	<link rel="prefetch" as="image/jpg" href="созрел вопрос.jpg">
 	<link rel="prefetch" as="image/png" href="question2.png">
 	<link rel="prefetch" as="image/png" href="Ночь в батихасе.jpg">
-	<link rel="preload" as="image" type="image/png" href="image2.png">
+	<link rel="preload" as="image" type="image/jpg" href="image.jpg">
 	<style type="text/css">
 		@font-face {
 			font-family: "Bickham Script One";
@@ -178,6 +178,14 @@
 			from{transform: rotate(-45deg) translate(300vmax);}
 			to{transform: rotate(-45deg) translate(-150vmax);}
 		}
+		@keyframes imageframes {
+			from {transform: translate(-100vmax, -100vmax) rotate(0deg);}
+			to {transform: translate(-100vmax, -100vmax) rotate(54.45deg);}
+		}
+		@keyframes imageframes2 {
+			from {height: 100vmax;}
+			to {height: 90vmax;}
+		}
 		::-webkit-scrollbar {
 			width: 0;
 			height: 0;
@@ -219,6 +227,7 @@
 		.img {
 			width: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000);
 			margin-left: calc(calc(calc(100% - calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000))/2);
+			height: calc(calc(calc(100vmin - 3em) - 98px) + 0px);
 			border: none;
 			padding: 0px;
 			margin-top: 10px;
@@ -227,6 +236,7 @@
 			transition-timing-function: ease;
 			display: inline-block;
 			overflow: hidden;
+			border-radius: 10px;
 		}
 		.buttons {
 			position: fixed;
@@ -296,6 +306,9 @@
 			display: none;
 			margin-right: 10px;
 			padding: 20px;
+		}
+		#z-ind {
+			z-index: 2;
 		}
 		.sisters::selection {
 			color: blue;
@@ -532,7 +545,7 @@
 			position: fixed;
 			top: 0;
 			left: 0;
-			z-index: 3;
+			z-index: 0;
 			background-color: beige;
 			background-image: url(imagefone.jpg);
 			width: 100vw;
@@ -543,9 +556,7 @@
 			animation-fill-mode: forwards;
 			animation-name: textw;
 			position: fixed;
-			top: calc(50vh - calc(calc(calc(100vmin - 3em) - 98px) / 10));
-			left: calc(50vw - calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 100));
-			z-index: 2;
+			z-index: 1;
 			background-image: url(vs.png);
 			background-size: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 200) calc(calc(calc(100vmin - 3em) - 98px) / 5);
 			height: calc(calc(calc(100vmin - 3em) - 98px) / 5);
@@ -553,6 +564,15 @@
 		}
 		#zero {
 			transform: translate(calc(calc(-1 * calc(calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000) + calc(calc(calc(100% - calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000))/2))) - 40px), 0);
+		}
+		#zero2 {
+			transform: translate(calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * -1000), 0);
+			animation-duration: 5s;
+			animation-fill-mode: forwards;
+			animation-name: textw;
+		}
+		#zero3 {
+			transform: translate(calc(calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * -500) - calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 100)), calc(calc(calc(calc(100vmin - 3em) - 98px) / 2) - calc(calc(calc(100vmin - 3em) - 98px) / 10)));
 		}
 		.blur {
 			width: 80px;
@@ -565,17 +585,84 @@
 			animation-duration: 5s;
 			animation-name: blurframes;
 			animation-iteration-count: infinite;
+		}
+		/*.esenintext {
+			width: 150vw;
+			height: 150vh;
+			background-color: white;
+			transform: rotate(54.45deg) translate(calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 500), 700px);
 			display: none;
+		}*/
+		.esenintext {
+			height: calc(calc(calc(100vmin - 3em) - 98px) + 200vmax);
+			width: calc(calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000) + 200vmax);
+			background-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 1) 50%);
+			transform: translate(-100vmax, -100vmax) rotate(0deg);
+			animation-delay: 1s;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			animation-name: imageframes;
+		}
+		tr {
+			height: 100vmax;
+			animation-delay: 1s;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+			animation-name: imageframes2;
+		}
+		td {
+			width: 100vmax;
+		}
+		.td {
+			width: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 500);
+		}
+		.tr {
+			height: calc(calc(100vmin - 3em) - 98px);
+			animation-name: none;
+		}
+		td p {
+			font-size: 3em;
+			padding-left: 10px;
 		}
 	</style>
 </head>
 <body>
 	<h1>Сравнение картины и стихотворения</h1>
-	<div class="lags"><div class="sisters"><span class="inSister">Сестры милосердия</span>
+	<div class="lags" id="z-ind"><div class="sisters"><span class="inSister">Сестры милосердия</span>
 	Во время Русско-турецкой войны 1877–1878 годов эти женщины, рискуя своей жизнью, спасали раненых бойцов. Но после окончания войны большинство сестёр оказались без средств к существованию и стали нищими.</div></div>
 	<div class="img">
-		<img src="image2.png" onclick="imageOnclick()">
-		<div class="lags" id="zero"><div class="blur"></div></div>
+		<img src="image.jpg" onclick="imageOnclick()">
+		<div class="lags" id="zero2"><div class="esenintext">
+			<table border="0" onclick="imageOnclick()">
+				<tr><td></td><td class="td"><td class="td"></td><td></td></tr>
+				<tr class="tr"><td></td><td class="td"><td class="td">
+					<p>Сергей Есенин</p>
+					<p>
+					Еду. Тихо. Слышны звоны<br>
+					Под копытом на снегу.<br>
+					Только серые вороны<br>
+					Расшумелись на лугу.
+					</p><p>
+					Заколдован невидимкой,<br>
+					Дремлет лес под сказку сна.<br>
+					Словно белою косынкой<br>
+					Повязалася сосна.
+					</p><p>
+					Понагнулась, как старушка,<br>
+					Оперлася на клюку,<br>
+					А под самою макушкой<br>
+					Долбит дятел на суку.
+					</p><p>
+					Скачет конь, простору много.<br>
+					Валит снег и стелет шаль.<br>
+					Бесконечная дорога<br>
+					Убегает лентой вдаль.</p>
+				</td><td></td></tr>
+				<tr><td></td><td class="td"><td class="td"></td><td></td></tr>
+			</table>
+		</div></div>
+		<div class="lags" id="zero3"></div>
+		<div class="lags" id="zero"></div>
 	</div>
 	<button accesskey="m" id="f" onclick="fullscreen()">Если вы видите этот текст, значит не загрузился css</button>
 	<center><font>Ночь в батихасе</font></center>
@@ -689,6 +776,7 @@
 		var monodown = document.querySelector('.monodown');
 		var q1 = document.querySelector('#q1');
 		var q2 = document.querySelector('#q2');
+		var esenintext = document.querySelector('.esenintext');
 		font.style.setProperty('display', 'none');
 		function fontTime() {font.textContent = 'Зимний вечер';}
 		function pagesLogic() {
@@ -700,21 +788,23 @@
 			q4In.style.setProperty('animation-name', 'qdown4');
 			window.location.href = '#';
 			setTimeout(function() {q4In.style.setProperty('display', 'none'); backimgsicreet.style.setProperty('display', 'none');}, 1000);
-			blur.style.setProperty('display', 'none');
+			blur.remove();
 			wiewstatus = false;
 			abimg.remove();
 			if (page === 0) {
 				h1.style.setProperty('animation-name', 'uptext');
 				setTimeout(function() {h1.textContent = 'Сравнение картины и стихотворения';}, 1000);
-				img.setAttribute('src', 'image2.png');
+				img.setAttribute('src', 'image.jpg');
 				img.style.setProperty('height', 'calc(calc(100vmin - 3em) - 98px)');
 				img.style.setProperty('width', 'calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000)');
 				divimg.style.setProperty('width', 'calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000)');
+				divimg.style.setProperty('height', 'calc(calc(100vmin - 3em) - 98px)');
 				img.style.setProperty('margin-left', '0');
 				divimg.style.setProperty('margin-left', 'calc(calc(calc(100% - calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000))/2)');
 				font.style.setProperty('animation-name', '');
 				font.style.setProperty('opacity', '0');
 				font.style.setProperty('display', 'none');
+				esenintext.style.setProperty('display', 'block');
 				font.textContent = '';
 				sisters.style.setProperty('display', 'block');
 				sisters.style.setProperty('transform', 'rotate(0deg) translate(0, 0)');
@@ -722,12 +812,14 @@
 				setTimeout(function(){sisters.style.setProperty('display', 'none');}, 1400);
 			}
 			if (page === 1) {
+				esenintext.style.setProperty('display', 'none');
 				img.style.setProperty('animation-duration', '0.8s');
 				h1.style.setProperty('animation-name', 'uptext2');
 				setTimeout(function() {h1.textContent = 'Гавриил Павлович Кондратенко';}, 1000);
 				img.setAttribute('src', 'Ночь в батихасе.jpg');
 				img.style.setProperty('height', 'calc(calc(100vmin - 5em) - 108px)');
 				img.style.setProperty('width', 'calc(calc(calc(calc(100vmin - 5em) - 108px) / 1302) * 1000)');
+				divimg.style.setProperty('height', 'calc(calc(100vmin - 5em) - 108px)');
 				divimg.style.setProperty('width', 'calc(calc(calc(calc(100vmin - 5em) - 108px) / 1302) * 1000)');
 				img.style.setProperty('margin-left', '0');
 				divimg.style.setProperty('margin-left', 'calc(calc(calc(100% - calc(calc(calc(100vmin - 5em) - 108px) / 1302) * 1000))/2)');
@@ -863,7 +955,6 @@
 		var allpages = 5;
 		var aboba = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'a', 'b', 'Enter'];
 		var abcounter = 0;
-		var blur = document.querySelector('.blur');
 		window.addEventListener('keydown', test);
 		function test(e) {
 			//alert (e.key);
@@ -874,8 +965,8 @@
 				abcounter++;
 				if (abcounter === 11) {
 					//alert('aboba');
-					img.before(abimg);
-					blur.style.setProperty('display', 'block');
+					document.querySelector('#zero3').prepend(abimg);
+					document.querySelector('#zero').prepend(blur);
 					abcounter = 0;
 				}
 			}
@@ -975,6 +1066,10 @@
 		hideDiv.setAttribute('class', 'hideDiv');
 		var abimg = document.createElement('div');
 		abimg.setAttribute('class', 'abimg');
+		abimg.setAttribute('onclick', 'imageOnclick()');
+		var blur = document.createElement('div');
+		blur.setAttribute('class', 'blur');
+		blur.setAttribute('onclick', 'imageOnclick()');
 		function hide() {
 			if (hideDivStatus === false) {
 				hideDivStatus = true;
