@@ -186,6 +186,29 @@
 			from {height: 100vmax;}
 			to {height: 90vmax;}
 		}
+		@keyframes bsh {
+			0% {transform: rotate3d(-1, -1, -1, 350deg);}
+			20% {transform: rotate3d(-1, -1, -1, 370deg);}
+			100% {transform: rotate3d(1, 1, 1, 10deg);}
+		}
+		@keyframes toBsh {
+			0% {transform: rotate3d(-1, -1, -1, 360deg);}
+			10% {transform: rotate3d(-1, -1, -1, 350deg);}
+			100% {transform: rotate3d(-1, -1, -1, 350deg);}
+		}
+		@keyframes bshImg {
+			0% {box-shadow: 20px 20px 20px 0px rgb(0 0 0 / 40%);}
+			20% {box-shadow: -20px 20px 20px 0px rgb(0 0 0 / 40%);}
+			40% {box-shadow: 20px 20px 20px 0px rgb(0 0 0 / 40%);}
+			60% {box-shadow: -20px -20px 20px 0px rgb(0 0 0 / 40%);}
+			80% {box-shadow: -20px 20px 20px 0px rgb(0 0 0 / 40%);}
+			100% {box-shadow: 20px 20px 20px 0px rgb(0 0 0 / 40%);}
+		}
+		@keyframes toBshImg {
+			0% {box-shadow: 0px 0px 0px 0px rgb(0 0 0 / 40%);}
+			10% {box-shadow: 20px 20px 20px 0px rgb(0 0 0 / 40%);}
+			100% {box-shadow: 20px 20px 20px 0px rgb(0 0 0 / 40%);}
+		}
 		::-webkit-scrollbar {
 			width: 0;
 			height: 0;
@@ -237,6 +260,10 @@
 			display: inline-block;
 			overflow: hidden;
 			border-radius: 10px;
+		}
+		.img, .weryImg {
+			animation-iteration-count: infinite;
+			animation-duration: 10s;
 		}
 		.buttons {
 			position: fixed;
@@ -561,6 +588,7 @@
 			background-size: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 200) calc(calc(calc(100vmin - 3em) - 98px) / 5);
 			height: calc(calc(calc(100vmin - 3em) - 98px) / 5);
 			width: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 200);
+			filter: drop-shadow(2px 4px 6px black) brightness(1.15);
 		}
 		#zero {
 			transform: translate(calc(calc(-1 * calc(calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000) + calc(calc(calc(100% - calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000))/2))) - 40px), 0);
@@ -575,14 +603,15 @@
 			transform: translate(calc(calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * -500) - calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 100)), calc(calc(calc(calc(100vmin - 3em) - 98px) / 2) - calc(calc(calc(100vmin - 3em) - 98px) / 10)));
 		}
 		.blur {
-			width: 80px;
+			width: 120px;
 			height: 150vmax;
-			filter: blur(5px);
+			/*filter: blur(5px);*/
+			filter: /*invert(1)*/ blur(10px);
 			background-image: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0));
 			overflow: visible;
 			position: fixed;
 			top: 0;
-			animation-duration: 4s;
+			animation-duration: 10s;
 			animation-name: blurframes;
 			animation-iteration-count: infinite;
 		}
@@ -619,12 +648,18 @@
 			font-size: 3em;
 			padding-left: 10px;
 		}
+		.bshaldow {
+			width: calc(calc(calc(calc(100vmin - 3em) - 98px) / 716) * 1000);
+			height: calc(calc(100vmin - 3em) - 98px);
+			border-radius: 10px;
+		}
 	</style>
 </head>
 <body>
 	<h1>Сравнение картины и стихотворения</h1>
 	<div class="lags" id="z-ind"><div class="sisters"><span class="inSister">Сестры милосердия</span>
 	Во время Русско-турецкой войны 1877–1878 годов эти женщины, рискуя своей жизнью, спасали раненых бойцов. Но после окончания войны большинство сестёр оказались без средств к существованию и стали нищими.</div></div>
+	<div class="weryImg">
 	<div class="img">
 		<img src="image.jpg" onclick="imageOnclick()">
 		<div class="lags" id="zero2"><div class="esenintext">
@@ -656,10 +691,12 @@
 				<tr><td></td><td class="td"><td class="td"></td><td></td></tr>
 			</table>
 		</div></div>
-		<div class="lags" id="zero3"></div>
 		<div class="lags" id="zero"></div>
+		<div class="lags" id="zero2"><div class="bshaldow"></div></div>
+		<div class="lags" id="zero3"></div>
 	</div>
-	<button accesskey="m" id="f" onclick="fullscreen()">Если вы видите этот текст, значит не загрузился css</button>
+	</div>
+	<button accesskey="m" id="f" onclick="fullscreen()">Error css</button>
 	<center><font>Ночь в батихасе</font></center>
 	<div class="sicreetText">
 	<center><span id="one"></span></center>
@@ -772,6 +809,7 @@
 		var q1 = document.querySelector('#q1');
 		var q2 = document.querySelector('#q2');
 		var esenintext = document.querySelector('.esenintext');
+		var weryImg = document.querySelector('.weryImg');
 		font.style.setProperty('display', 'none');
 		function fontTime() {font.textContent = 'Зимний вечер';}
 		function pagesLogic() {
@@ -786,6 +824,8 @@
 			blur.remove();
 			wiewstatus = false;
 			abimg.remove();
+			weryImg.style.setProperty('animation-name', '');
+			divimg.style.setProperty('animation-name', '');
 			if (page === 0) {
 				h1.style.setProperty('animation-name', 'uptext');
 				setTimeout(function() {h1.textContent = 'Сравнение картины и стихотворения';}, 1000);
@@ -949,21 +989,51 @@
 		var page = 0;
 		var allpages = 5;
 		var aboba = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'a', 'b', 'Enter'];
+		var aboba2 = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a', 'Enter'];
 		var abcounter = 0;
+		var abstat = false;
 		window.addEventListener('keydown', test);
 		function test(e) {
 			//alert (e.key);
+			while (true) {
 			if (((e.key === "h") || (e.key === "р")) || ((e.key === "H") || (e.key === "Р"))) {
 				hide();
 			}
 			else if ((e.key === aboba[abcounter]) && (page === 0)) {
+				if ((abstat === true) && (abcounter !== 10)) {
+					abcounter = false;
+					abcounter = 0;
+					continue;
+				}
 				abcounter++;
 				if (abcounter === 11) {
-					//alert('aboba');
-					document.querySelector('#zero3').prepend(abimg);
-					document.querySelector('#zero').prepend(blur);
+					if (abstat === true) {
+						//alert('abobainverse');
+						document.querySelector('#zero3').prepend(abimg);
+						setTimeout(function() {document.querySelector('#zero').prepend(blur);}, 3400);
+						weryImg.style.setProperty('animation-name', 'toBsh');
+						divimg.style.setProperty('animation-name', 'toBshImg');
+						setTimeout(function() {
+							weryImg.style.setProperty('animation-name', 'bsh');
+							divimg.style.setProperty('animation-name', 'bshImg');
+						}, 1200);
+					}
+					else {
+						//alert('aboba');
+						document.querySelector('#zero3').prepend(abimg);
+						document.querySelector('#zero').prepend(blur);
+					}
 					abcounter = 0;
 				}
+				abstat = false;
+			}
+			else if ((e.key === aboba2[abcounter]) && (page === 0)) {
+				if ((abstat === false) && (abcounter === 9)) {
+					abcounter = 0;
+					continue;
+				}
+				abstat = true;
+				abcounter++;
 			}
 			else if ((e.key === aboba[abcounter]) && (page === 5)) {
 				abcounter++;
@@ -976,6 +1046,7 @@
 				}
 			}
 			else if ((e.key === aboba[0]) && ((page === 0) || (page === 5))) {
+				abstat = false;
 				if (abcounter !== 0) {
 					if (aboba[abcounter-1] === aboba[0]) {
 						abcounter = 2;
@@ -989,6 +1060,7 @@
 				}
 			}
 			else {
+				abstat = false;
 				abcounter = 0;
 				if (((e.key === "f") || (e.key === "а")) || ((e.key === "F") || (e.key === "А"))) {
 					fullscreen();
@@ -1010,6 +1082,8 @@
 						}
 					}
 				}
+			}
+			break;
 			}
 		}
 		function nextButtonOnclick() {
