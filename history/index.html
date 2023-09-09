@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Русско-Турецкая война</title>
+	<link rel="preload" as="image" type="image/jpg" href="imagefone.jpg">
+	<style type="text/css">
+		html {
+			background-image: url(imagefone.jpg);
+			background-color: beige;
+			--img-size: 70vh;
+		}
+		@font-face {
+			font-family: "Bickham Script One";
+			font-style: normal;
+			font-weight: 400;
+			src: local("Bickham Script One"),
+				url("bickhamscriptone.woff") format("woff");
+		}
+		@keyframes load_image {
+			from {
+				height: 50vh;
+				width: calc(calc(50vh * 1200) / 869);
+				background-size: calc(calc(50vh * 1200) / 869);
+				opacity: 0.5;
+			}
+			to {
+				height: var(--img-size);
+				width: calc(calc(var(--img-size) * 1200) / 869);
+				background-size: calc(calc(var(--img-size) * 1200) / 869);
+				opacity: 1;
+			}
+		}
+		@keyframes loading {
+			from {opacity: 1;}
+			to {opacity: 0;}
+		}
+		@keyframes loading_uptext {
+			from {transform: translate(0, calc(-1 * calc(32px + 2em)));}
+			to {transform: translate(0);}
+		}
+		@keyframes uptext {
+			0%{transform: rotate(0deg) translate(0, 0);}
+			10%{transform: rotate(5deg) translate(0, 25px);}
+			40%{transform: rotate(-20deg) translate(0, -300px);}
+			60%{transform: rotate(20deg) translate(0, -300px);}
+			80%{transform: rotate(-5deg) translate(0, 25px);}
+			100%{transform: rotate(0deg) translate(0, 0);}
+		}
+		@keyframes loading_buttons {
+			from {transform: translate(0, 30px);}
+			to {transform: translate(0);}
+		}
+		html, body {
+			margin: 0;
+			width: 100vw;
+		}
+		h1 {
+			font-size: 3em;
+			animation-duration: 1s;
+			animation-name: loading_uptext;
+			animation-timing-function: ease-out;
+		}
+		.buttons {
+			transform: translate(0, 30px);
+			position: fixed;
+			bottom: 10px;
+			left: calc(50vw - 60px);
+			width: 120px;
+			height: 20px;
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+		}
+		button {
+			transition-duration: 0.4s;
+			width: 60px;
+		}
+		.loading_span {
+			font-size: 3em;
+		}
+		#img {
+			background-image: url("тюльпаны.webp");
+			transition-duration: 0.4s;
+			transition-timing-function: ease;
+			border-radius: 10px;
+			animation-duration: 1s;
+			animation-name: load_image;
+			animation-timing-function: ease-out;
+			background-size: calc(calc(var(--img-size) * 1200) / 869);
+			position: relative;
+		}
+		#img, #loading {
+			height: var(--img-size);
+			width: calc(calc(var(--img-size) * 1200) / 869);
+			/*margin-left: calc(calc(100vw - calc(calc(var(--img-size) * 1200) / 869)) / 2);*/
+			margin: auto;
+		}
+		#on_img {
+			width: calc(calc(var(--img-size) * 1200) / 869);
+			margin: auto;
+		}
+		#loading {
+			animation-duration: 1s;
+			animation-fill-mode: forwards;
+		}
+		#ahmet {
+			transition-duration: 0.4s;
+			transition-timing-function: ease;
+			position: absolute;
+			background-image: url("III._Ahmet.jpg");
+			border-radius: 10px;
+			z-index: -1;
+			height: var(--img-size);
+			width: calc(calc(var(--img-size) * 1108) / 1564);
+			background-size: 100%;
+			left: calc(calc(calc(100vw - calc(calc(var(--img-size) * 1200) / 869)) / 2) - calc(calc(calc(var(--img-size) * 1108) / 1564) / 2));
+			display: none;
+			transform: translate(calc(calc(calc(calc(var(--img-size) * 1108) / 1564) / 2) + 5px));
+		}
+		#ahmed_div {
+			margin-top: calc(calc(var(--img-size) / 100) * 79);
+		}
+		#ahmed_text {
+			font-size: 2.5em;
+			font-family: "Bickham Script One", serif;
+			
+		}
+	</style>
+</head>
+<body>
+	<center><span class='loading_span', id='h1'> </span></center>
+	<div id="on_img"><div id='ahmet'><div id='ahmed_div'><center id="ahmed_text">Ахмед III</center></div></div><div id="loading"><center><span class='loading_span' id='loading_span'>loading...</span></center></div></div>
+	<div class="buttons">
+		<button id="last" style="opacity: 0.6;" onclick="lastButtonOnclick()" accesskey="l">назад</button><button id="next" onclick="nextButtonOnclick()" accesskey="n">вперёд</button>
+	</div>
+	<script type="text/javascript"> //audio
+		var sound = new Audio("Памяти героев русско-турецкой войны 1877-1878 гг. [l9n3xxDYffs].mp3");
+		sound.loop = true;
+		window.addEventListener('keydown', keys_down);
+		function fullscreen() {
+			if (document.fullscreenEnabled !== false) {
+				if (document.fullscreen == false) {
+					document.querySelector('html').requestFullscreen();
+				}
+				else {
+					document.exitFullscreen();
+				}
+			}
+		}
+		function keys_down(e) {
+			if (e.key === " ") {
+				if (sound.paused) sound.play();
+				else sound.pause();
+			}
+			if (e.key === "f") fullscreen();
+		}
+	</script>
+	<script type="text/javascript"> // loading
+		var div = document.createElement('div');
+		var h1 = document.createElement('h1');
+		var ahmet = document.querySelector('#ahmet');
+		h1.innerHTML = 'Эпоха тюльпанов';
+		div.id = 'img';
+		var img_load = new Image();
+		img_load.src = 'тюльпаны.webp';
+		var img_load2 = new Image();
+		img_load2.src = 'III._Ahmet.jpg';
+		function wait_for_load() {
+			let loads = img_load.complete + img_load2.complete;
+			document.querySelector('#loading_span').textContent = `loading... ${loads} / ${2}`;
+			if (loads == 2) {
+				console.log('imgs was loaded');
+				document.querySelector('#loading').style.animationName = 'loading';
+				setTimeout (function() {
+					document.querySelector('#loading').replaceWith(div);
+					document.querySelector('#h1').replaceWith(h1);
+					document.querySelector('.buttons').style.setProperty('animation-name', 'loading_buttons');
+					document.querySelector('#on_img').style.width = "calc(calc(calc(calc(var(--img-size) * 1108) / 1564) + calc(calc(var(--img-size) * 1200) / 869)) + 5px)";
+					setTimeout (function () {
+						ahmet.style.display = 'block';
+						setTimeout (function () {
+							ahmet.style.setProperty('transform', 'translate(0)');
+							div.style.setProperty('transform', 'translate(calc(calc(calc(calc(var(--img-size) * 1108) / 1564) / 2) + 5px))');
+						}, 100);
+					}, 1000);
+			}, 1000);
+			}
+			else {
+				setTimeout(wait_for_load, 100);
+			}
+		}
+		wait_for_load();
+	</script>
+	<script type="text/javascript"> //buttons
+		var last = document.querySelector('#last');
+		var next = document.querySelector('#next');
+		var page = 0;
+		var allpages = 5;
+		window.addEventListener('keydown', test);
+		function test(e) {
+			if ((e.key === "ArrowRight") || (e.key === " ")) {
+				nextButtonOnclick();
+			}
+			else {
+				if (e.key === "ArrowLeft") {
+					lastButtonOnclick();
+				}
+			}
+		}
+		function nextButtonOnclick() {
+			if (page < allpages) {
+				page++;
+				pagesLogic();
+				last.style.setProperty('opacity', 1);
+				if (page == allpages) {next.style.setProperty('opacity', 0.6);}
+			}
+		}
+		function lastButtonOnclick() {
+			if (page > 0) {
+				page--;
+				pagesLogic();
+				next.style.setProperty('opacity', 1);
+				if (page == 0) {last.style.setProperty('opacity', 0.6);}
+			}
+		}
+		
+	</script>
+</body>
+</html>
