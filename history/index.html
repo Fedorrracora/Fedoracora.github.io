@@ -49,9 +49,58 @@
 			80%{transform: rotate(-5deg) translate(0, 25px);}
 			100%{transform: rotate(0deg) translate(0, 0);}
 		}
+		@keyframes uptext2 {
+			0%{transform: rotate(0deg) translate(0, 0);}
+			10%{transform: rotate(5deg) translate(0, 25px);}
+			40%{transform: rotate(-20deg) translate(0, -300px);}
+			60%{transform: rotate(20deg) translate(0, -300px);}
+			80%{transform: rotate(-5deg) translate(0, 25px);}
+			100%{transform: rotate(0deg) translate(0, 0);}
+		}
 		@keyframes loading_buttons {
 			from {transform: translate(0, 30px);}
 			to {transform: translate(0);}
+		}
+		@keyframes returning {
+			0% {background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));}
+			50% {background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));}
+			100% {background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));}
+		}
+		@keyframes dating {
+			0% {
+				top: 0em;
+				opacity: 1;
+			}
+			49% {
+				top: 1em;
+				opacity: 0;
+			}
+			51% {
+				top: 0em;
+				opacity: 0;
+			}
+			0% {
+				top: 0em;
+				opacity: 1;
+			}
+		}
+		@keyframes dating2 {
+			0% {
+				top: 0em;
+				opacity: 1;
+			}
+			49% {
+				top: 1em;
+				opacity: 0;
+			}
+			51% {
+				top: 0em;
+				opacity: 0;
+			}
+			0% {
+				top: 0em;
+				opacity: 1;
+			}
 		}
 		html, body {
 			margin: 0;
@@ -120,12 +169,24 @@
 			transform: translate(calc(calc(calc(calc(var(--img-size) * 1108) / 1564) / 2) + 5px));
 		}
 		#ahmed_div {
-			margin-top: calc(calc(var(--img-size) / 100) * 79);
+			transition-duration: 0.4s;
+			transition-timing-function: ease;
+			margin-top: calc(calc(var(--img-size) / 1000) * 795);
 		}
 		#ahmed_text {
 			font-size: 2.5em;
 			font-family: "Bickham Script One", serif;
 			
+		}
+		#in_div {
+			width: 100%;
+			height: 100%;
+			animation-duration: 1s;
+			/*animation-name: returning;*/
+		}
+		#date {
+			animation-duration: 2s;
+			position: relative;
 		}
 	</style>
 </head>
@@ -150,7 +211,7 @@
 			}
 		}
 		function keys_down(e) {
-			if (e.key === " ") {
+			if (e.key === 'p' || e.key === 'P' || e.key === 'з' || e.key === 'З') {
 				if (sound.paused) sound.play();
 				else sound.pause();
 			}
@@ -159,19 +220,57 @@
 	</script>
 	<script type="text/javascript"> // loading
 		var div = document.createElement('div');
+		var in_div = document.createElement('div');
 		var h1 = document.createElement('h1');
 		var ahmet = document.querySelector('#ahmet');
 		h1.innerHTML = 'Эпоха тюльпанов';
 		div.id = 'img';
+		in_div.id = 'in_div';
 		var img_load = new Image();
 		img_load.src = 'тюльпаны.webp';
 		var img_load2 = new Image();
 		img_load2.src = 'III._Ahmet.jpg';
+		var img_load3 = new Image();
+		img_load3.src = 'war-1768-1774-map.jpg';
+		var img_load4 = new Image();
+		img_load4.src = 'ochakov-sturm-big.jpg';
+		var loaded = false;
+		var viewed = false;
 		function wait_for_load() {
-			let loads = img_load.complete + img_load2.complete;
-			document.querySelector('#loading_span').textContent = `loading... ${loads} / ${2}`;
-			if (loads == 2) {
+			let loads = img_load.complete + img_load2.complete + img_load3.complete + img_load4.complete;
+			document.querySelector('#loading_span').textContent = `loading... ${loads} / ${4}`;
+			if (loads == 4) {
 				console.log('imgs was loaded');
+				document.querySelector('#loading_span').textContent = 'Press any key';
+				loaded = true;
+				
+			}
+			else {
+				setTimeout(wait_for_load, 100);
+			}
+		}
+		wait_for_load();
+	</script>
+	<script type="text/javascript"> //buttons
+		var last = document.querySelector('#last');
+		var next = document.querySelector('#next');
+		var page = 1;
+		var allpages = 3;
+		window.addEventListener('keydown', test);
+		function test(e) {
+			console.log(`pressed ${e.key}`);
+			if (viewed) {
+				if ((e.key === "ArrowRight") || (e.key === " ")) {
+					nextButtonOnclick();
+				}
+				else {
+					if (e.key === "ArrowLeft") {
+						lastButtonOnclick();
+					}
+				}
+			}
+			else if (loaded) {
+				viewed = true;
 				document.querySelector('#loading').style.animationName = 'loading';
 				setTimeout (function() {
 					document.querySelector('#loading').replaceWith(div);
@@ -185,47 +284,110 @@
 							div.style.setProperty('transform', 'translate(calc(calc(calc(calc(var(--img-size) * 1108) / 1564) / 2) + 5px))');
 						}, 100);
 					}, 1000);
-			}, 1000);
-			}
-			else {
-				setTimeout(wait_for_load, 100);
-			}
-		}
-		wait_for_load();
-	</script>
-	<script type="text/javascript"> //buttons
-		var last = document.querySelector('#last');
-		var next = document.querySelector('#next');
-		var page = 0;
-		var allpages = 5;
-		window.addEventListener('keydown', test);
-		function test(e) {
-			if ((e.key === "ArrowRight") || (e.key === " ")) {
-				nextButtonOnclick();
-			}
-			else {
-				if (e.key === "ArrowLeft") {
-					lastButtonOnclick();
-				}
+				}, 1000);
 			}
 		}
 		function nextButtonOnclick() {
 			if (page < allpages) {
 				page++;
-				pagesLogic();
+				pagesLogic(false);
 				last.style.setProperty('opacity', 1);
 				if (page == allpages) {next.style.setProperty('opacity', 0.6);}
 			}
 		}
 		function lastButtonOnclick() {
-			if (page > 0) {
+			if (page > 1) {
 				page--;
-				pagesLogic();
+				pagesLogic(true);
 				next.style.setProperty('opacity', 1);
-				if (page == 0) {last.style.setProperty('opacity', 0.6);}
+				if (page == 1) {last.style.setProperty('opacity', 0.6);}
 			}
 		}
-		
+	</script>
+	<script type="text/javascript"> //pageslogic
+		function pagesLogic(lp) {
+			if (page === 2) {
+				if (lp) {
+					document.querySelector('#date').style.setProperty('animation-name', 'dating2');
+					setTimeout(function() {
+						document.querySelector('#date').textContent = '1768-1774';
+						div.style.setProperty('background-image', 'url(war-1768-1774-map.jpg)');
+						div.style.width = 'calc(calc(var(--img-size) * 1768) / 1774)';
+						div.style.setProperty('background-size', 'calc(calc(var(--img-size) * 1768) / 1774)');
+					}, 1000);
+				}
+				else {
+					h1.style.setProperty('animation-duration', '2s');
+					h1.style.setProperty('animation-name', 'uptext');
+					div.style.setProperty('transform', 'translate(0)');
+					ahmet.style.setProperty('transform', 'translate(calc(calc(calc(calc(var(--img-size) * 1108) / 1564) / 1) + 5px))');
+					setTimeout(function() {
+						h1.innerHTML = 'Русско-турецкая война <span id="date">1768-1774</span> годов';
+						ahmet.style.display = 'none';
+						div.style.setProperty('transform', 'translate(0px) rotate3d(1, 0, 0, 180deg)');
+						darked = false;
+						div.append(in_div);
+						setTimeout(function() {
+							document.querySelector('#on_img').style.setProperty('transform', 'rotateX(180deg)');
+						}, 100);
+						dark();
+						div.style.setProperty('background-image', 'url(war-1768-1774-map.jpg)');
+						div.style.width = 'calc(calc(var(--img-size) * 1768) / 1774)';
+						div.style.setProperty('background-size', 'calc(calc(var(--img-size) * 1768) / 1774)');
+					}, 1000);
+				}
+			}
+			if (page === 1) {
+				darked = false;
+				dark();
+				h1.style.setProperty('animation-name', 'uptext2');
+				setTimeout (function () {
+					h1.innerHTML = 'Эпоха тюльпанов';
+					ahmet.style.display = 'block';
+					setTimeout (function () {
+						div.style.setProperty('transform', 'translate(calc(calc(calc(calc(var(--img-size) * 1108) / 1564) / 2) + 5px))');
+						ahmet.style.setProperty('transform', 'translate(calc(calc(calc(calc(var(--img-size) * 1108) / 1564) / -2) + 5px))');
+					}, 100);
+				}, 1000);
+				setTimeout(function() {
+					document.querySelector('#on_img').style.setProperty('transform', 'rotateX(0deg)');
+				}, 100);
+				div.style.setProperty('transform', 'translate(0px) rotate3d(1, 0, 0, 0deg)');
+				div.style.setProperty('background-image', 'url(тюльпаны.webp)');
+				div.style.width = 'calc(calc(var(--img-size) * 1200) / 869)';
+				div.style.setProperty('background-size', 'calc(calc(var(--img-size) * 1200) / 869)');
+			}
+			if (page === 3) {
+				document.querySelector('#date').style.setProperty('animation-name', 'dating');
+				setTimeout(function() {
+					document.querySelector('#date').textContent = '1787-1791';
+					div.style.setProperty('background-image', 'url(ochakov-sturm-big.jpg)');
+					div.style.width = 'calc(calc(var(--img-size) * 1100) / 734)';
+					div.style.setProperty('background-size', 'calc(calc(var(--img-size) * 1100) / 734)');
+				}, 1000);
+			}
+		}
+		var dark_value = 0;
+		var darked;
+		function dark() {
+			if (darked) {
+				dark_value -= 0.3/10;
+				if (dark_value > 0) {
+					in_div.style.setProperty('background-image', `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, ${dark_value}))`);
+					setTimeout(function() {
+						dark();
+					}, 10);
+				}
+			}
+			else {
+				dark_value += 0.3/10;
+				if (dark_value >= 0.3) darked = true;
+				in_div.style.setProperty('background-image', `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, ${dark_value}))`);
+				setTimeout(function() {
+					dark();
+				}, 10);
+			}
+		}
 	</script>
 </body>
 </html>
